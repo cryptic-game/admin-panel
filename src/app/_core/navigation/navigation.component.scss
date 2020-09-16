@@ -1,0 +1,30 @@
+@import "variables", "color-scheme";
+
+$header-height: $cube * 5;
+$sidebar-width: $cube * 5;
+
+:host {
+  display: grid;
+  grid-template-columns:$sidebar-width calc(100vw - #{$sidebar-width});
+  grid-template-rows: $header-height calc(100vh - #{$header-height});
+  grid-template-areas: "logo header"
+                       "sidebar main";
+
+  .logo {
+    grid-area: logo;
+  }
+
+  .header {
+    grid-area: header;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+  }
+
+  main {
+    grid-area: main;
+    overflow-y: auto;
+    background-color: $secondary;
+  }
+}

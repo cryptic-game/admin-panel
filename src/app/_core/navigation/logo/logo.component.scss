@@ -1,0 +1,19 @@
+@import "variables", "color-scheme";
+
+:host {
+  background-color: $green-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $cube * 0.2;
+
+  a {
+    width: 100%;
+    height: 100%;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

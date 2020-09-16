@@ -1,0 +1,48 @@
+@import "variables", "color-scheme";
+
+h1, h2, h3, h4, h5, h6, strong, b, html, button, input, optgroup, select, textarea, p, a, span, div {
+  font-family: $font-family;
+  color: $text-color;
+  letter-spacing: $letter-spacing;
+  line-height: 1.4;
+}
+
+html, button, input, optgroup, select, textarea, p, a, span, div {
+  font-weight: $normal-font-weight;
+}
+
+button, input, optgroup, select, textarea, p, a, span, div {
+  font-size: $text-font-size;
+}
+
+h1 {
+  margin: 0;
+  font-size: $title-font-size * 1.25;
+}
+
+h2 {
+  font-size: $title-font-size;
+}
+
+h3 {
+  font-size: $title-font-size * 0.8;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: $bold-font-weight;
+}
+
+/*code, pre {
+  width: 100%;
+  display: block;
+  overflow: auto;
+}
+
+code, code *, pre, pre * {
+  font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: $font-family-mono;
+  font-size: $text-font-size * 0.85;
+}*/

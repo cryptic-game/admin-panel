@@ -1,0 +1,31 @@
+@import "variables", "color-scheme";
+
+:host {
+  background-color: $secondary-light;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 $cube * 2;
+
+  span.title {
+    font-size: $title-font-size;
+    user-select: none;
+  }
+
+  div.user-management {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    a.username {
+      color: $bright;
+      margin-right: $cube * 2;
+      user-select: none;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}

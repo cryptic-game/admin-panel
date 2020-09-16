@@ -1,0 +1,35 @@
+/* Sizes */
+$cube: 0.625rem;
+
+$bp-xs: 0;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+$breakpoints: (
+  "xs": $bp-xs,
+  "sm": $bp-sm,
+  "md": $bp-md,
+  "lg": $bp-lg,
+  "xl": $bp-xl
+);
+
+/* Fonts */
+$font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+//$font-family-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+$text-font-size: $cube * 1.6;
+$title-font-size: $cube * 2;
+
+$normal-font-weight: 400;
+$bold-font-weight: 600;
+
+$letter-spacing: 0;
+
+/* Other Stuff */
+$box-radius: $cube * 0.4;
+$transition: 250ms;
+$transition-fast: 200ms;
+$transition-type: ease-in-out;
+$transition-type-bounce: cubic-bezier(0.2, 0, 0.13, 1.5);

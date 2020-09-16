@@ -1,0 +1,57 @@
+@import "variables", "color-scheme";
+
+$colors: (
+  'default': $blue-dark,
+  'green': $green,
+  'yellow': $yellow,
+  'red': $red
+);
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: $cube * 0.4;
+  padding: $cube * 0.6 $cube * 1.6;
+  margin: $cube * 0.6 0;
+
+  cursor: pointer;
+  transition: all $transition $transition-type;
+
+  ::ng-deep [controlIcon] {
+    display: block;
+    width: $cube * 2.1;
+    height: $cube * 2.1;
+    margin-right: $cube * 0.25;
+
+    svg {
+      fill: $text-color;
+    }
+  }
+
+  ::ng-deep span {
+    color: $text-color;
+    user-select: none;
+    cursor: inherit;
+  }
+
+  &.disabled {
+    background-color: $gray-light;
+  }
+
+  @each $name, $color in $colors {
+    &.#{$name} {
+      background-color: $color;
+
+      &:hover {
+        background-color: darken($color, 10%);
+      }
+
+      &:active {
+        transition: none;
+        box-shadow: inset 0 0 $cube * 1 0 darken($color, 20%);
+      }
+    }
+  }
+}

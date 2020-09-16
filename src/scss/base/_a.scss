@@ -1,0 +1,12 @@
+@import "variables", "color-scheme";
+
+a {
+  text-decoration: none;
+  color: $primary;
+  transition: color $transition;
+  outline: none;
+}
+
+a:hover {
+  color: $primary-dark;
+}
