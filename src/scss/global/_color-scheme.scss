@@ -42,4 +42,5 @@ $secondary-dark: darken($secondary, 10%);
 $secondary-light: lighten($secondary, 5%);
 
 $text-color: $bright;
+$secondary-text-color: darken($text-color, 40%);
 $dark-text-color: $gray-dark;

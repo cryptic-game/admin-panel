@@ -1,0 +1,51 @@
+@import "variables", "color-scheme";
+
+$border-radius: $cube * 0.7;
+
+:host {
+  display: inline-flex;
+  flex-direction: row;
+  user-select: none;
+  font-size: $text-font-size * 0.8;
+
+  ::ng-deep label {
+    cursor: pointer;
+    padding: $cube * 1;
+    background-color: transparentize($primary-dark, 0.9);
+    border: $primary-dark solid $cube * 0.1;
+
+    &:not(:last-child) {
+      border-right: $primary-dark solid $cube * 0.1;
+    }
+
+    &:last-child {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+
+    &:nth-child(n+2) {
+      margin-left: -($cube * 0.1);
+    }
+
+    &:hover {
+      border-color: $primary;
+
+      & + input + label {
+        border-left: $primary solid $cube * 0.1;
+      }
+    }
+  }
+
+  ::ng-deep input {
+    display: none;
+
+    &:first-child + label {
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    &:checked + label {
+      background-color: $primary;
+    }
+  }
+}

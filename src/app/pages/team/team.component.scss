@@ -1,0 +1,13 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin: $cube * 3;
+
+  div.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($cube * 18.5, 1fr));
+    grid-gap: $cube * 2;
+  }
+}

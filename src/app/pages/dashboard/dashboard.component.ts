@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavigationService } from '../../_core/navigation/navigation.service';
 
 @Component({
   selector: 'admin-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.scss' ]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  constructor() {
+  constructor(
+    private navigationService: NavigationService
+  ) {
+    this.navigationService.updateVisibility(true);
   }
-
-  ngOnInit(): void {
-  }
-
 }

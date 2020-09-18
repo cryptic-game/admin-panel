@@ -1,5 +1,22 @@
-@import "color-scheme";
+@import "variables", "color-scheme";
 
 :host {
   background-color: $secondary-light;
+
+  display: flex;
+  flex-direction: column;
+  padding: $cube;
+
+  a {
+    ::ng-deep svg {
+      transition: $transition $transition-type;
+    }
+
+    &:hover {
+      ::ng-deep svg {
+        fill: $primary-light;
+      }
+    }
+  }
+
 }

@@ -1,6 +1,8 @@
-<admin-logo class="logo"></admin-logo>
-<admin-header class="header"></admin-header>
-<admin-sidebar class="sidebar"></admin-sidebar>
+<ng-template [ngIf]="this.visibility">
+  <admin-logo class="logo"></admin-logo>
+  <admin-header class="header"></admin-header>
+  <admin-sidebar class="sidebar"></admin-sidebar>
+</ng-template>
 <main>
   <ng-content></ng-content>
 </main>

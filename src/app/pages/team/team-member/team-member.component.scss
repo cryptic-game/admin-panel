@@ -1,0 +1,31 @@
+@import "variables", "color-scheme";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  width: calc(100% - #{$cube * 6});
+  height: calc(100% - #{$cube * 6});
+  padding: $cube * 3;
+
+  border-radius: $cube * 0.7;
+  border: transparent solid $cube * 0.2;
+  transition: border-color $transition $transition-type;
+
+  &:hover {
+    border-color: $primary;
+    cursor: pointer;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 100%;
+    margin-bottom: $cube * 1.5;
+  }
+
+  span.department {
+    color: $secondary-text-color;
+  }
+}

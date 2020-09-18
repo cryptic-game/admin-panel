@@ -1,0 +1,18 @@
+<div class="toolbar">
+  <control-radio>
+    <input id="_" [formControl]="this.departmentFilter" type="radio" name="departmentFilter" value="_">
+    <label for="_">
+      All
+    </label>
+    <ng-container *ngFor="let department of this.departments">
+      <input [id]="department.id" [formControl]="this.departmentFilter" type="radio" name="departmentFilter"
+             [value]="department.id">
+      <label [for]="department.id">
+        {{department.name}}
+      </label>
+    </ng-container>
+  </control-radio>
+</div>
+<div class="grid">
+  <admin-team-member *ngFor="let member of this.members" [member]="member"></admin-team-member>
+</div>

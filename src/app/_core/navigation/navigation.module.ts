@@ -6,6 +6,7 @@ import { NavigationComponent } from './navigation.component';
 import { LogoComponent } from './logo/logo.component';
 import { ControlsModule } from '../controls/controls.module';
 import { RouterModule } from '@angular/router';
+import { IconsModule } from '../icons/icons.module';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,12 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     NavigationComponent
   ],
-  imports: [
-    CommonModule,
-    ControlsModule,
-    RouterModule
-  ]
+    imports: [
+        CommonModule,
+        ControlsModule,
+        RouterModule,
+        IconsModule
+    ]
 })
 export class NavigationModule {
 }

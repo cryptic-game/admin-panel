@@ -1,0 +1,32 @@
+@import "variables", "color-scheme";
+
+:host {
+  width: calc(100vw - #{$cube * 4});
+  height: calc(100vh - #{$cube * 4});
+
+  padding: $cube * 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  h1 {
+    font-size: $title-font-size * 8;
+  }
+
+  p {
+    max-width: $cube * 75;
+    text-align: center;
+
+    &, a {
+      font-size: $text-font-size * 1.5;
+    }
+
+    a {
+      margin-top: $cube * 3;
+      display: block;
+    }
+  }
+}

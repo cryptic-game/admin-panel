@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import "variables", "color-scheme";
 
 * {
   margin: 0;
@@ -8,6 +9,21 @@
 
 html {
   box-sizing: border-box;
+  background-color: $secondary;
+
+  body div.noscript {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    h2 {
+      margin-bottom: $cube;
+    }
+  }
 }
 
 @import "scss/base/font", "scss/base/a";
