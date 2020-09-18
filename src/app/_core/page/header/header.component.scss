@@ -1,0 +1,10 @@
+@import "variables", "color-scheme";
+
+:host {
+  padding: $cube $cube * 2;
+  border-bottom: $secondary-light solid $cube * 0.1;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

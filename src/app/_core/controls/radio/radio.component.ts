@@ -6,8 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: [ './radio.component.scss' ]
 })
 export class RadioComponent {
-
-  constructor() {
-  }
-
 }

@@ -7,25 +7,29 @@ import { LogoComponent } from './logo/logo.component';
 import { ControlsModule } from '../controls/controls.module';
 import { RouterModule } from '@angular/router';
 import { IconsModule } from '../icons/icons.module';
+import { SlideoutComponent } from './slideout/slideout.component';
+import { SlideoutOutletDirective } from './slideout/slideout-outlet.directive';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     NavigationComponent,
-    LogoComponent
+    LogoComponent,
+    SlideoutComponent,
+    SlideoutOutletDirective
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     NavigationComponent
   ],
-    imports: [
-        CommonModule,
-        ControlsModule,
-        RouterModule,
-        IconsModule
-    ]
+  imports: [
+    CommonModule,
+    ControlsModule,
+    RouterModule,
+    IconsModule
+  ]
 })
 export class NavigationModule {
 }

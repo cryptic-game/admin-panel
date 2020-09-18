@@ -4,6 +4,7 @@ import { TeamService } from '../../_api/team/team.service';
 import { TeamDepartment, TeamMember } from '../../_api/team/team';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { TeamSlideoutAddMemberComponent } from './team-slideout-add-member/team-slideout-add-member.component';
 
 @Component({
   selector: 'admin-team',
@@ -12,20 +13,22 @@ import { FormControl } from '@angular/forms';
 })
 export class TeamComponent {
 
-  private departmentId: string;
   departmentFilter: FormControl;
+  private departmentId: string;
 
   constructor(
-    private navigationService: NavigationService,
-    private teamService: TeamService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private readonly navigationService: NavigationService,
+    private readonly teamService: TeamService,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router
   ) {
+    this.navigationService.setTitle('Team');
     this.navigationService.updateVisibility(true);
-    this.departmentFilter = new FormControl(this.departmentId || '_');
-    this.departmentFilter.valueChanges.subscribe(value => this.router.navigate(value === '_' ? [ 'team' ] : [ 'team', value ]));
+    this.navigationService.showSlideout(TeamSlideoutAddMemberComponent);
+    this.departmentFilter = new FormControl(this.departmentId || 'all');
+    this.departmentFilter.valueChanges.subscribe(value => this.router.navigate([ 'team', value ]));
     this.activatedRoute.params.subscribe(value => {
-      this.departmentId = value.departmentId || '_';
+      this.departmentId = value.departmentId;
       this.departmentFilter.setValue(this.departmentId, { emitEvent: false });
     });
   }
@@ -35,8 +38,12 @@ export class TeamComponent {
   }
 
   get members(): TeamMember[] {
-    return this.departmentId !== '_'
+    return this.departmentId !== 'all'
       ? this.teamService.members?.filter(member => member.department_id === this.departmentId)
       : this.teamService.members;
+  }
+
+  trackBy(index: number, item: TeamDepartment | TeamMember): string {
+    return item.id;
   }
 }

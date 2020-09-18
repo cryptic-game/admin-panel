@@ -12,6 +12,6 @@ export class ButtonComponent {
   private disabled = false;
 
   @Input()
-  @HostBinding('classList')
+  @HostBinding('className')
   private type: 'default' | 'green' | 'yellow' | 'red' = 'default';
 }

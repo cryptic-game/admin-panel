@@ -12,10 +12,11 @@
 
   border-radius: $cube * 0.7;
   border: transparent solid $cube * 0.2;
-  transition: border-color $transition $transition-type;
+  transition: border-color $transition $transition-type, background-color $transition $transition-type;
 
   &:hover {
-    border-color: $primary;
+    border-color: $primary-dark;
+    background-color: $primary-dark-transparent;
     cursor: pointer;
   }
 
@@ -23,6 +24,11 @@
     border-radius: 50%;
     width: 100%;
     margin-bottom: $cube * 1.5;
+    user-select: none;
+  }
+
+  span {
+    user-select: none;
   }
 
   span.department {

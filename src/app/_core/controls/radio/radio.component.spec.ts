@@ -10,7 +10,7 @@ describe('RadioComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ RadioComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -2,6 +2,7 @@
 
 $header-height: $cube * 5;
 $sidebar-width: $cube * 5;
+$slideout-with: $cube * 40;
 
 :host {
 
@@ -11,25 +12,38 @@ $sidebar-width: $cube * 5;
 
   &.visible {
     display: grid;
-    grid-template-columns:$sidebar-width calc(100vw - #{$sidebar-width});
+    grid-template-columns: $sidebar-width calc(100vw - #{$sidebar-width});
     grid-template-rows: $header-height calc(100vh - #{$header-height});
     grid-template-areas: "logo header"
                        "sidebar main";
 
     .logo {
       grid-area: logo;
+      z-index: 101;
     }
 
     .header {
       grid-area: header;
+      z-index: 100;
     }
 
     .sidebar {
       grid-area: sidebar;
+      z-index: 100;
     }
 
     main {
       grid-area: main;
+    }
+
+    &.slideout {
+      grid-template-columns: $sidebar-width calc(100vw - #{$sidebar-width + $slideout-with}) $slideout-with;
+      grid-template-areas: "logo header header"
+                       "sidebar main slideout";
+
+      .slideout {
+        grid-area: slideout;
+      }
     }
   }
 }

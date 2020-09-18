@@ -1,13 +1,21 @@
 @import "variables";
 
-:host {
-  display: flex;
-  flex-direction: column;
-  margin: $cube * 3;
+.grid {
+  display: grid;
 
-  div.grid {
-    display: grid;
+  &:not(.error) {
     grid-template-columns: repeat(auto-fill, minmax($cube * 18.5, 1fr));
     grid-gap: $cube * 2;
+  }
+
+  &.error {
+    height: calc(100% * 0.5);
+  }
+
+  div.error {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    user-select: none;
   }
 }

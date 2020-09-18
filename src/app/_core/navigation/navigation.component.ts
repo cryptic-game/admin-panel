@@ -8,12 +8,19 @@ import { NavigationService } from './navigation.service';
 })
 export class NavigationComponent {
 
+  title: string;
+
   @HostBinding('class.visible')
   visibility: boolean;
 
+  @HostBinding('class.slideout')
+  slideout: object;
+
   constructor(
-    private navigationService: NavigationService
+    private readonly navigationService: NavigationService
   ) {
+    this.navigationService.title.subscribe(value => this.title = value);
     this.navigationService.visibility.subscribe(value => this.visibility = value);
+    this.navigationService.slideout.subscribe(value => this.slideout = value);
   }
 }

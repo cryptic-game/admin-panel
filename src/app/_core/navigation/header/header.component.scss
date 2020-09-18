@@ -9,9 +9,11 @@
   justify-content: space-between;
 
   padding: 0 $cube * 2;
+  box-shadow: $box-shadow;
 
   span.title {
     font-size: $title-font-size;
+    font-weight: $bold-font-weight;
     user-select: none;
   }
 

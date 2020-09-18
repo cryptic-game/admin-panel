@@ -2,7 +2,7 @@
 
 :host {
   width: calc(100vw - #{$cube * 4});
-  height: calc(100vh - #{$cube * 4});
+  height: calc((100vh - #{$cube * 4}) * 0.75);
 
   padding: $cube * 2;
 
@@ -10,7 +10,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 
   h1 {
     font-size: $title-font-size * 8;

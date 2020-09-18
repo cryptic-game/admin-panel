@@ -1,0 +1,16 @@
+@import "variables";
+
+:host {
+  width: 100%;
+
+  ::ng-deep label {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      outline: none;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}

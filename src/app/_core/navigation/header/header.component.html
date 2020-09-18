@@ -1,7 +1,7 @@
-<span class="title">Admin Panel</span>
+<span class="title">Admin Panel<ng-template [ngIf]="title"> - {{title}}</ng-template></span>
 <div class="user-management">
   <a class="username" routerLink="/account">Username</a>
-  <control-button type="green">
+  <control-button type="red">
     <icon-logout controlIcon></icon-logout>
     <span>Log Out</span>
   </control-button>

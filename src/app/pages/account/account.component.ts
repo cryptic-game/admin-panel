@@ -9,8 +9,10 @@ import { NavigationService } from '../../_core/navigation/navigation.service';
 export class AccountComponent {
 
   constructor(
-    private navigationService: NavigationService
+    private readonly navigationService: NavigationService
   ) {
+    this.navigationService.setTitle('Account');
     this.navigationService.updateVisibility(true);
+    this.navigationService.showSlideout(undefined);
   }
 }

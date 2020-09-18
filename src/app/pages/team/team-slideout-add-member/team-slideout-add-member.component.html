@@ -1,0 +1,27 @@
+<img [src]="'https://avatars.githubusercontent.com/u/' + githubId" alt="">
+
+<form [formGroup]="form">
+  <control-text-field>
+    <label>
+      Name
+      <input formControlName="name" type="text">
+    </label>
+  </control-text-field>
+  <control-text-field>
+    <label>
+      GitHub Name
+      <input formControlName="githubName" type="text">
+    </label>
+  </control-text-field>
+  <control-text-field>
+    <label>
+      Joined
+      <input formControlName="joined" type="date">
+    </label>
+  </control-text-field>
+</form>
+
+<control-button (click)="save()" class="button" type="green">
+  <icon-save controlIcon></icon-save>
+  <span>Save</span>
+</control-button>

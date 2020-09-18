@@ -13,16 +13,12 @@ html {
 
   body div.noscript {
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh * 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-
-    h2 {
-      margin-bottom: $cube;
-    }
   }
 }
 

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TeamComponent } from './team.component';
 
 const routes: Routes = [
-  { path: '', component: TeamComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'all' },
   { path: ':departmentId', component: TeamComponent }
 ];
 

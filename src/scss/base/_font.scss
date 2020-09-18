@@ -32,6 +32,10 @@ h1, h2, h3, h4, h5, h6, strong, b {
   font-weight: $bold-font-weight;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $cube;
+}
+
 /*code, pre {
   width: 100%;
   display: block;

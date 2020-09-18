@@ -21,8 +21,8 @@ export class TeamService {
 
   private updateCache(): void {
     forkJoin({
-      departments: this.apiService.endpoint<TeamDepartment[]>('team/department/get'),
-      members: this.apiService.endpoint<TeamMember[]>('team/member/get')
+      departments: this.apiService.endpoint<TeamDepartment[]>('team/department/list'),
+      members: this.apiService.endpoint<TeamMember[]>('team/member/list')
     }).subscribe(data => {
       this.departments = data.departments.body.data;
       this.members = data.members.body.data;

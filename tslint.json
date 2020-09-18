@@ -22,7 +22,8 @@
       "camelCase",
       "admin",
       "control",
-      "icon"
+      "icon",
+      "page"
     ],
     "component-selector": [
       true,
@@ -30,7 +31,8 @@
       "kebab-case",
       "admin",
       "control",
-      "icon"
+      "icon",
+      "page"
     ],
     "eofline": true,
     "import-blacklist": [

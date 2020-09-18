@@ -1,7 +1,8 @@
 <ng-template [ngIf]="this.visibility">
   <admin-logo class="logo"></admin-logo>
-  <admin-header class="header"></admin-header>
+  <admin-header class="header" [title]="title"></admin-header>
   <admin-sidebar class="sidebar"></admin-sidebar>
+  <admin-slideout *ngIf="this.slideout" class="slideout" [slideout]="slideout"></admin-slideout>
 </ng-template>
 <main>
   <ng-content></ng-content>

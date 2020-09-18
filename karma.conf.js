@@ -4,7 +4,7 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    frameworks: [ 'jasmine', '@angular-devkit/build-angular' ],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
@@ -17,15 +17,15 @@ module.exports = function (config) {
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/admin-panel'),
-      reports: ['html', 'lcovonly', 'text-summary'],
+      reports: [ 'html', 'lcovonly', 'text-summary' ],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: [ 'progress', 'kjhtml' ],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: [ 'Chrome' ],
     singleRun: false,
     restartOnFileChange: true
   });

@@ -1,18 +1,25 @@
-<div class="toolbar">
-  <control-radio>
-    <input id="_" [formControl]="this.departmentFilter" type="radio" name="departmentFilter" value="_">
-    <label for="_">
-      All
-    </label>
-    <ng-container *ngFor="let department of this.departments">
-      <input [id]="department.id" [formControl]="this.departmentFilter" type="radio" name="departmentFilter"
-             [value]="department.id">
-      <label [for]="department.id">
-        {{department.name}}
-      </label>
-    </ng-container>
-  </control-radio>
-</div>
-<div class="grid">
-  <admin-team-member *ngFor="let member of this.members" [member]="member"></admin-team-member>
-</div>
+<page-layout>
+  <page-header>
+    <control-radio>
+      <input [formControl]="this.departmentFilter" id="_" name="departmentFilter" type="radio" value="all">
+      <label for="_">All</label>
+      <ng-container *ngFor="let department of this.departments; trackBy: trackBy">
+        <input [formControl]="this.departmentFilter" [id]="department.id" [value]="department.id"
+               name="departmentFilter"
+               type="radio">
+        <label [for]="department.id">{{department.name}}</label>
+      </ng-container>
+    </control-radio>
+    <control-button type="default">
+      <icon-add controlIcon></icon-add>
+      <span>Member</span>
+    </control-button>
+  </page-header>
+  <page-body [class.error]="!this.members?.length" class="grid">
+    <admin-team-member *ngFor="let member of this.members; trackBy: trackBy" [member]="member"></admin-team-member>
+    <div *ngIf="!this.members?.length" class="error">
+      <h1>Nothing found</h1>
+      <p>This department has no members.</p>
+    </div>
+  </page-body>
+</page-layout>

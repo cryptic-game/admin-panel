@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationService } from '../../_core/navigation/navigation.service';
+import { TeamService } from '../../_api/team/team.service';
 
 @Component({
   selector: 'admin-dashboard',
@@ -8,9 +9,15 @@ import { NavigationService } from '../../_core/navigation/navigation.service';
 })
 export class DashboardComponent {
 
+  members: number;
+
   constructor(
-    private navigationService: NavigationService
+    private readonly navigationService: NavigationService,
+    private readonly teamService: TeamService
   ) {
+    this.navigationService.setTitle('Dashboard');
     this.navigationService.updateVisibility(true);
+    this.navigationService.showSlideout(undefined);
+    this.members = this.teamService.members?.length;
   }
 }

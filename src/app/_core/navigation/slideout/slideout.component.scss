@@ -1,0 +1,8 @@
+@import "variables", "color-scheme";
+
+:host {
+  background-color: $secondary-light;
+  box-shadow: $box-shadow;
+  padding: $cube * 2;
+  overflow-y: auto;
+}

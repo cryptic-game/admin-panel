@@ -6,6 +6,11 @@
   justify-content: center;
   align-items: center;
   padding: $cube * 0.2;
+  transition: background-color $transition $transition-type;
+
+  &:hover {
+    background-color: $green;
+  }
 
   a {
     width: 100%;
