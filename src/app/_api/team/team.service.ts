@@ -19,6 +19,11 @@ export class TeamService {
     return !this.departments ? null : this.departments.find(department => department.id === departmentId);
   }
 
+  public addMember(name: string, githubId: number, joined: number): void {
+    this.apiService.endpoint<TeamMember>('team/member/add', { name, github_id: githubId, joined })
+      .subscribe(data => this.members.push(data.body.data));
+  }
+
   private updateCache(): void {
     forkJoin({
       departments: this.apiService.endpoint<TeamDepartment[]>('team/department/list'),

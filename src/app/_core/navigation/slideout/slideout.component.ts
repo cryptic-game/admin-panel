@@ -22,14 +22,14 @@ export class SlideoutComponent implements OnChanges {
   ) {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.loadComponent(this.slideout);
+  }
+
   private loadComponent(component: Type<unknown>): void {
     this.outlet.viewContainerRef.clear();
     if (component) {
       this.outlet.viewContainerRef.createComponent(this.componentFactory.resolveComponentFactory(component));
     }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.loadComponent(this.slideout);
   }
 }

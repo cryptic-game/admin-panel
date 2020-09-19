@@ -1,7 +1,8 @@
-@import "variables";
+@import "variables", "color-scheme";
 
 :host {
-  width: 100%;
+  display: block;
+  margin: $cube 0;
 
   ::ng-deep label {
     display: flex;
@@ -11,6 +12,8 @@
       outline: none;
       border: none;
       background-color: transparent;
+      border-bottom: $text-color solid $cube * 0.1;
+      padding: $cube * 0.5;
     }
   }
 }

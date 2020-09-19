@@ -10,7 +10,7 @@ describe('SaveComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ SaveComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

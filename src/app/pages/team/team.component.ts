@@ -24,7 +24,7 @@ export class TeamComponent {
   ) {
     this.navigationService.setTitle('Team');
     this.navigationService.updateVisibility(true);
-    this.navigationService.showSlideout(TeamSlideoutAddMemberComponent);
+    this.navigationService.showSlideout(undefined);
     this.departmentFilter = new FormControl(this.departmentId || 'all');
     this.departmentFilter.valueChanges.subscribe(value => this.router.navigate([ 'team', value ]));
     this.activatedRoute.params.subscribe(value => {
@@ -45,5 +45,9 @@ export class TeamComponent {
 
   trackBy(index: number, item: TeamDepartment | TeamMember): string {
     return item.id;
+  }
+
+  showAddMemberSlideout(): void {
+    this.navigationService.showSlideout(TeamSlideoutAddMemberComponent);
   }
 }
