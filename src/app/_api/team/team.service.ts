@@ -29,8 +29,8 @@ export class TeamService {
       departments: this.apiService.endpoint<TeamDepartment[]>('team/department/list'),
       members: this.apiService.endpoint<TeamMember[]>('team/member/list')
     }).subscribe(data => {
-      this.departments = data.departments.body.data;
-      this.members = data.members.body.data;
+      this.departments = data.departments.body;
+      this.members = data.members.body;
     }, error => console.error(error));
   }
 }
