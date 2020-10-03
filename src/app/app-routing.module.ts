@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'account', loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule) },
   { path: 'team', loadChildren: () => import('./pages/team/team.module').then(m => m.TeamModule) },
+  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
   { path: '**', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) }
 ];
 

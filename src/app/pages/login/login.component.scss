@@ -1,0 +1,34 @@
+@import "variables", "color-scheme";
+
+:host {
+  width: calc(100vw - #{$cube * 4});
+  height: calc((100vh - #{$cube * 4}) * 0.75);
+
+  padding: $cube * 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .logo {
+    width: $cube * 10;
+    height: $cube * 10;
+    margin-bottom: $cube * 3;
+  }
+
+  h1 {
+    font-size: $title-font-size * 2;
+  }
+
+  p {
+    max-width: $cube * 75;
+    text-align: center;
+    font-size: $text-font-size * 1.5;
+    margin-bottom: $cube * 3;
+  }
+
+  h1, p {
+    user-select: none;
+  }
+}

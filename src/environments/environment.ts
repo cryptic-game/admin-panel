@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: `${window.location.protocol}//${window.location.host}/api`
+  apiBaseUrl: `${window.location.protocol}//${window.location.host}/api`,
+  clientId: 'a1f8b8b54f9724ba6ce1'
 };
 
 /*
