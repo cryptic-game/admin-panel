@@ -5,6 +5,28 @@
   <br>
   you are a team member of Cryptic.
 </p>
-<control-button (click)="loginWithGithub()">
-  <span>Login with GitHub</span>
+
+<control-button (click)="loginWithGithub()" [disabled]="loading">
+  <span *ngIf="loading">Loading...</span>
+  <span *ngIf="!loading">Login with GitHub</span>
 </control-button>
+
+<span class="error" *ngIf="error">
+  Login failed!
+  <br>
+
+  <ng-template [ngIf]="error == 403">
+     You are not allowed to access the Admin Panel.
+  </ng-template>
+
+  <ng-template [ngIf]="error != 403">
+    Please try again. If the error persists,
+    <br>
+    create a
+    <a href="https://github.com/cryptic-game/admin-panel/issues/new?labels=bug&template=BUG_REPORT.md" target="_blank"
+       rel="noreferrer">Bug Report</a>
+    on GitHub.
+    <br>
+    Do not forget to take a look into the console.
+  </ng-template>
+</span>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationService } from '../../_core/navigation/navigation.service';
+import { User } from '../../_core/account/account';
+import { AccountService } from '../../_core/account/account.service';
 
 @Component({
   selector: 'admin-account',
@@ -8,8 +10,13 @@ import { NavigationService } from '../../_core/navigation/navigation.service';
 })
 export class AccountComponent {
 
+  get user(): User {
+    return this.accountService.user;
+  }
+
   constructor(
-    private readonly navigationService: NavigationService
+    private readonly navigationService: NavigationService,
+    private readonly accountService: AccountService
   ) {
     this.navigationService.setTitle('Account');
     this.navigationService.updateVisibility(true);

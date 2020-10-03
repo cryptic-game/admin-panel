@@ -1,6 +1,8 @@
 <page-layout>
   <page-body>
-    <h2>Coming Soon!</h2>
-    <p>This features isn't finished yet.</p>
+    <ng-template [ngIf]="user">
+      <h2>Account Details</h2>
+      <span>{{user.name}}</span>
+    </ng-template>
   </page-body>
 </page-layout>

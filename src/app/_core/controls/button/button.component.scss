@@ -36,10 +36,6 @@ $colors: (
     cursor: inherit;
   }
 
-  &.disabled {
-    background-color: $gray-light;
-  }
-
   @each $name, $color in $colors {
     &.#{$name} {
       background-color: $color;
@@ -52,6 +48,16 @@ $colors: (
         transition: none;
         box-shadow: inset 0 0 $cube * 1 0 darken($color, 20%);
       }
+    }
+  }
+
+  &.disabled {
+    &, &:hover {
+      background-color: $gray-light;
+    }
+
+    &:active {
+      box-shadow: none;
     }
   }
 }

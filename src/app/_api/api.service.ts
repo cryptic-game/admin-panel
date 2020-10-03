@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ApiService {
 
-  private readonly defaultHeaders: HttpHeaders;
+  private defaultHeaders: HttpHeaders;
 
   constructor(
     private httpClient: HttpClient

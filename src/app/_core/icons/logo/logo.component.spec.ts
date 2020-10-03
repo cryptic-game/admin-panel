@@ -10,7 +10,7 @@ describe('LogoComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ LogoComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

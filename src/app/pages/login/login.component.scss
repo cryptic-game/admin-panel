@@ -21,14 +21,27 @@
     font-size: $title-font-size * 2;
   }
 
-  p {
+  p, span.error {
     max-width: $cube * 75;
     text-align: center;
     font-size: $text-font-size * 1.5;
     margin-bottom: $cube * 3;
   }
 
-  h1, p {
+  h1, p, span.error {
     user-select: none;
+  }
+
+  span.error {
+    margin-top: $cube * 3;
+    color: $bright;
+    border-radius: $cube * 0.4;
+    padding: $cube * 2;
+    background-color: transparentize($red, .7);
+    border: $cube * 0.1 solid $red-dark;
+
+    &, a {
+      font-size: $text-font-size * 1.2;
+    }
   }
 }

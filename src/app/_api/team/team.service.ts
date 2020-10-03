@@ -11,7 +11,9 @@ export class TeamService {
   departments: TeamDepartment[];
   members: TeamMember[];
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private readonly apiService: ApiService
+  ) {
     this.updateCache();
   }
 
@@ -21,7 +23,7 @@ export class TeamService {
 
   public addMember(name: string, githubId: number, joined: number): void {
     this.apiService.endpoint<TeamMember>('team/member/add', { name, github_id: githubId, joined })
-      .subscribe(data => this.members.push(data.body.data));
+      .subscribe(data => this.members.push(data.body));
   }
 
   private updateCache(): void {
