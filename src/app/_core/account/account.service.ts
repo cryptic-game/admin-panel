@@ -82,6 +82,6 @@ export class AccountService {
     this.expire = undefined;
 
     // @ts-ignore
-    this.router.navigateByUrl([]).then(() => console.log('See you later!'));
+    this.router.navigate(['/login']).then(console.log('See you later!'));
   }
 }

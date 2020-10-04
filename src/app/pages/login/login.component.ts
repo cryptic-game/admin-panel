@@ -46,7 +46,9 @@ export class LoginComponent implements OnInit {
           console.log(`Welcome ${this.accountService.user.name}, I see you have found the developer console.`
             + '\nYou have successfully logged in with GitHub.');
           if (this.return) {
-            this.router.navigateByUrl('/' + this.return).then();
+            this.router.navigate(this.return.split('/')).then();
+          } else {
+            this.router.navigate(['dashboard']).then();
           }
           this.loading = false;
         },
