@@ -13,6 +13,6 @@ export class NotFoundComponent {
   ) {
     this.navigationService.setTitle('Not Found');
     this.navigationService.updateVisibility(false);
-    this.navigationService.showSlideout(undefined);
+    this.navigationService.showSlideOut(undefined);
   }
 }

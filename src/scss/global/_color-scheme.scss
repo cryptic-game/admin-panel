@@ -42,6 +42,7 @@ $primary-dark-transparent: transparentize($primary-dark, 0.5);
 $secondary: darken(mix($gray-dark, $blue, 95%), 15%);
 $secondary-dark: darken($secondary, 10%);
 $secondary-light: lighten($secondary, 5%);
+$secondary-lighter: lighten($secondary, 15%);
 
 $text-color: $bright;
 $secondary-text-color: darken($bright, 40%);

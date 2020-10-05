@@ -52,8 +52,8 @@ export class AccountService {
           this.logout();
         } else {
           this.refreshAccessToken().subscribe(
-            data => console.log('Successfully updated access token.'),
-            error => this.logout()
+            () => console.log('Successfully updated access token.'),
+            () => this.logout()
           );
         }
       }

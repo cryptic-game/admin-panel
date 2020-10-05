@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../../_core/navigation/navigation.service';
-import { environment } from '../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, mergeMap, tap } from 'rxjs/operators';
 import { ApiService } from '../../_api/api.service';
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.navigationService.setTitle('Login');
     this.navigationService.updateVisibility(false);
-    this.navigationService.showSlideout(undefined);
+    this.navigationService.showSlideOut(undefined);
   }
 
   ngOnInit(): void {
@@ -55,15 +54,19 @@ export class LoginComponent implements OnInit {
         error => {
           console.error(error);
           this.error = error.status;
+          this.loading = false;
         }
       );
   }
 
   loginWithGithub(): void {
-    let href = `https://github.com/login/oauth/authorize?client_id=${environment.clientId}&redirect_uri=${window.location.protocol}//${window.location.host}/login`;
-    if (this.return) {
-      href += `?return=${this.return}`;
-    }
-    window.location.href = href;
+    this.apiService.endpoint<{ client_id: string }>('authentication/oauth/client_id')
+      .subscribe(data => {
+        let href = `https://github.com/login/oauth/authorize?client_id=${data.body.client_id}&redirect_uri=${window.location.protocol}//${window.location.host}/login`;
+        if (this.return) {
+          href += `?return=${this.return}`;
+        }
+        window.location.href = href;
+      });
   }
 }

@@ -34,15 +34,16 @@ $slideout-with: $cube * 40;
 
     main {
       grid-area: main;
-    }
 
-    &.slideout {
-      grid-template-columns: $sidebar-width calc(100vw - #{$sidebar-width + $slideout-with}) $slideout-with;
-      grid-template-areas: "logo header header"
-                       "sidebar main slideout";
+      display: flex;
+      flex-direction: row;
 
-      .slideout {
-        grid-area: slideout;
+      div.body {
+        flex-grow: 1;
+      }
+
+      .slide-out {
+        width: $cube * 50;
       }
     }
   }

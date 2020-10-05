@@ -1,9 +1,9 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[adminSlideoutOutlet]'
+  selector: '[adminSlideOutOutlet]'
 })
-export class SlideoutOutletDirective {
+export class SlideOutOutletDirective {
 
   constructor(
     public readonly viewContainerRef: ViewContainerRef

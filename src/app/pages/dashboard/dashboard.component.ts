@@ -17,7 +17,7 @@ export class DashboardComponent {
   ) {
     this.navigationService.setTitle('Dashboard');
     this.navigationService.updateVisibility(true);
-    this.navigationService.showSlideout(undefined);
+    this.navigationService.showSlideOut(undefined);
     this.members = this.teamService.members?.length;
   }
 }

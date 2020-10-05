@@ -4,7 +4,7 @@ import { TeamService } from '../../_api/team/team.service';
 import { TeamDepartment, TeamMember } from '../../_api/team/team';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { TeamSlideoutAddMemberComponent } from './team-slideout-add-member/team-slideout-add-member.component';
+import { TeamSlideOutAddMemberComponent } from './team-sidebar-add-member/team-slide-out-add-member.component';
 
 @Component({
   selector: 'admin-team',
@@ -24,7 +24,7 @@ export class TeamComponent {
   ) {
     this.navigationService.setTitle('Team');
     this.navigationService.updateVisibility(true);
-    this.navigationService.showSlideout(undefined);
+    this.navigationService.showSlideOut(undefined);
     this.departmentFilter = new FormControl(this.departmentId || 'all');
     this.departmentFilter.valueChanges.subscribe(value => this.router.navigate([ 'team', value ]));
     this.activatedRoute.params.subscribe(value => {
@@ -47,7 +47,7 @@ export class TeamComponent {
     return item.id;
   }
 
-  showAddMemberSlideout(): void {
-    this.navigationService.showSlideout(TeamSlideoutAddMemberComponent);
+  showAddMemberSlideOut(): void {
+    this.navigationService.showSlideOut(TeamSlideOutAddMemberComponent);
   }
 }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TeamSlideoutAddMemberComponent } from './team-slideout-add-member.component';
+import { TeamSlideOutAddMemberComponent } from './team-slide-out-add-member.component';
 
 describe('TeamSlideoutAddMemberComponent', () => {
-  let component: TeamSlideoutAddMemberComponent;
-  let fixture: ComponentFixture<TeamSlideoutAddMemberComponent>;
+  let component: TeamSlideOutAddMemberComponent;
+  let fixture: ComponentFixture<TeamSlideOutAddMemberComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamSlideoutAddMemberComponent ]
+      declarations: [ TeamSlideOutAddMemberComponent ]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TeamSlideoutAddMemberComponent);
+    fixture = TestBed.createComponent(TeamSlideOutAddMemberComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,6 +5,29 @@
 * {
   margin: 0;
   padding: 0;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: $secondary-lighter $secondary;
+
+  /* Webkit */
+  ::-webkit-scrollbar {
+    width: $cube * 0.7;
+    height: $cube * 0.7;
+    background-color: $secondary;
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $secondary-lighter;
+  }
 }
 
 html {

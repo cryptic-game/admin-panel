@@ -1,0 +1,42 @@
+@import "variables", "color-scheme";
+
+:host {
+  background-color: $secondary-light;
+  box-shadow: $box-shadow;
+  overflow-y: auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: $cube * 6 1fr;
+  grid-template-areas: "header" "body";
+  grid-gap: $cube;
+
+  & > * {
+    padding: $cube $cube * 2;
+  }
+
+  header {
+    grid-area: header;
+    border-bottom: $secondary-lighter solid $cube * 0.1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-size: $title-font-size * 0.9;
+      user-select: none;
+    }
+
+    div.icon {
+      width: $cube * 3;
+      height: $cube * 3;
+      cursor: pointer;
+    }
+  }
+
+  section {
+    grid-area: body;
+    overflow-y: auto;
+  }
+}

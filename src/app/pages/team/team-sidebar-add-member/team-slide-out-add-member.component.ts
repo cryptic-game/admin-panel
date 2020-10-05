@@ -4,14 +4,14 @@ import { interval, Observable } from 'rxjs';
 import { debounce, filter, map, mergeMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamService } from '../../../_api/team/team.service';
-import { NavigationService } from '../../../_core/navigation/navigation.service';
+import { SlideOutDelegate } from '../../../_core/navigation/slide-out/slide-out-delegate';
 
 @Component({
-  selector: 'admin-team-slideout-add-member',
-  templateUrl: './team-slideout-add-member.component.html',
-  styleUrls: [ './team-slideout-add-member.component.scss' ]
+  selector: 'admin-team-slide-out-add-member',
+  templateUrl: './team-slide-out-add-member.component.html',
+  styleUrls: [ './team-slide-out-add-member.component.scss' ]
 })
-export class TeamSlideoutAddMemberComponent {
+export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
 
   form: FormGroup;
   githubId = 0;
@@ -19,9 +19,9 @@ export class TeamSlideoutAddMemberComponent {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly httpClient: HttpClient,
-    private readonly teamService: TeamService,
-    private readonly navigationService: NavigationService
+    private readonly teamService: TeamService
   ) {
+    super();
     this.form = this.formBuilder.group({
       name: [ '', Validators.required ],
       githubName: [ '', Validators.required ],
@@ -47,7 +47,7 @@ export class TeamSlideoutAddMemberComponent {
     this.form.reset();
     this.githubId = 0;
 
-    this.navigationService.showSlideout(undefined);
+    this.close();
   }
 
   private loadGitHubId(username: string): Observable<number> {

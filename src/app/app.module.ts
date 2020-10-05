@@ -7,6 +7,7 @@ import { NavigationModule } from './_core/navigation/navigation.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ApiInterceptorInterceptor } from './_api/api-interceptor.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ApiInterceptorInterceptor } from './_api/api-interceptor.interceptor';
     AppRoutingModule,
     NavigationModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorInterceptor, multi: true }

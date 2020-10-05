@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SlideoutComponent } from './slideout.component';
+import { SlideOutComponent } from './slide-out.component';
 
 describe('SlideoutComponent', () => {
-  let component: SlideoutComponent;
-  let fixture: ComponentFixture<SlideoutComponent>;
+  let component: SlideOutComponent;
+  let fixture: ComponentFixture<SlideOutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SlideoutComponent ]
+      declarations: [ SlideOutComponent ]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SlideoutComponent);
+    fixture = TestBed.createComponent(SlideOutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

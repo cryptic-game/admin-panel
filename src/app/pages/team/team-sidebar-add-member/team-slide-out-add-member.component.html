@@ -21,7 +21,7 @@
   </control-text-field>
 </form>
 
-<control-button (click)="save()" class="button" type="green">
+<control-button (click)="save()" class="button" type="green" [disabled]="!form.valid">
   <icon-save controlIcon></icon-save>
   <span>Save</span>
 </control-button>

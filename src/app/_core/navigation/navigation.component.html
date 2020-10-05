@@ -2,8 +2,10 @@
   <admin-logo class="logo"></admin-logo>
   <admin-header [title]="title" class="header"></admin-header>
   <admin-sidebar class="sidebar"></admin-sidebar>
-  <admin-slideout *ngIf="this.slideout" [slideout]="slideout" class="slideout"></admin-slideout>
 </ng-template>
 <main>
-  <ng-content></ng-content>
+  <div class="body">
+    <ng-content></ng-content>
+  </div>
+  <admin-slide-out *ngIf="this.slideOut" [slideOut]="slideOut" class="slide-out" @slideFromRight></admin-slide-out>
 </main>

@@ -20,6 +20,6 @@ export class AccountComponent {
   ) {
     this.navigationService.setTitle('Account');
     this.navigationService.updateVisibility(true);
-    this.navigationService.showSlideout(undefined);
+    this.navigationService.showSlideOut(undefined);
   }
 }

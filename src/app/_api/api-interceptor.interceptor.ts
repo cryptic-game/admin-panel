@@ -18,7 +18,9 @@ export class ApiInterceptorInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.url.startsWith(environment.apiBaseUrl) && !(request.url.endsWith('authentication/oauth/callback') || request.url.endsWith('authentication/token/refresh'))) {
+    if (this.accountService.jwt
+      && request.url.startsWith(environment.apiBaseUrl)
+      && !(request.url.endsWith('authentication/oauth/callback') || request.url.endsWith('authentication/token/refresh'))) {
 
       if (this.accountService.expired) {
         return this.accountService.refreshAccessToken()
