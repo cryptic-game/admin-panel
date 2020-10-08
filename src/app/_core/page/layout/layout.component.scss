@@ -1,5 +1,16 @@
+@import "variables";
+
 :host {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: $cube * 7 1fr;
+  grid-template-areas: "header" "body";
+
+  page-header {
+    grid-area: header;
+  }
+
+  page-body {
+    grid-area: body;
+  }
 }

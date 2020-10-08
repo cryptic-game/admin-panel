@@ -7,7 +7,7 @@ $slideout-with: $cube * 40;
 :host {
 
   main {
-    overflow-y: auto;
+    overflow: hidden;
   }
 
   &.visible {
