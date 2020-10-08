@@ -1,1 +1,4 @@
 <ng-content select="label"></ng-content>
+<ul *ngIf="currentValues && !selected">
+  <li *ngFor="let value of currentValues; trackBy trackBy" (click)="select(value)">{{value.name}}</li>
+</ul>

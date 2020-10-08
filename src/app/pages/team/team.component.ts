@@ -4,7 +4,7 @@ import { TeamService } from '../../_api/team/team.service';
 import { TeamDepartment, TeamMember } from '../../_api/team/team';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { TeamSlideOutAddMemberComponent } from './team-sidebar-add-member/team-slide-out-add-member.component';
+import { TeamSlideOutAddMemberComponent } from './team-slide-out-add-member/team-slide-out-add-member.component';
 
 @Component({
   selector: 'admin-team',

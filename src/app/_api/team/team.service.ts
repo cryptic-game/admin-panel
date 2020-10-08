@@ -21,9 +21,13 @@ export class TeamService {
     return !this.departments ? null : this.departments.find(department => department.id === departmentId);
   }
 
-  public addMember(name: string, githubId: number, joined: number): void {
-    this.apiService.endpoint<TeamMember>('team/member/add', { name, github_id: githubId, joined })
-      .subscribe(data => this.members.push(data.body));
+  public addMember(name: string, githubId: number, departmentId: string, joined: Date): void {
+    this.apiService.endpoint<TeamMember>('team/member/add', {
+      name,
+      github_id: githubId,
+      department_id: departmentId,
+      joined: Math.floor(joined.getTime() / 1000)
+    }).subscribe(data => this.members.push(data.body));
   }
 
   private updateCache(): void {

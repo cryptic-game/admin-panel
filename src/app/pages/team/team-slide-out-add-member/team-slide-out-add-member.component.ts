@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { interval, Observable } from 'rxjs';
-import { debounce, filter, map, mergeMap } from 'rxjs/operators';
+import { interval, Observable, of } from 'rxjs';
+import { catchError, debounce, filter, map, mergeMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamService } from '../../../_api/team/team.service';
+import { NavigationService } from '../../../_core/navigation/navigation.service';
+import { TeamDepartment } from '../../../_api/team/team';
 import { SlideOutDelegate } from '../../../_core/navigation/slide-out/slide-out-delegate';
 
 @Component({
@@ -25,6 +27,8 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
     this.form = this.formBuilder.group({
       name: [ '', Validators.required ],
       githubName: [ '', Validators.required ],
+      departmentId: [ '', Validators.required ],
+      departmentName: [ '', Validators.required ],
       joined: [ '', Validators.required ]
     });
 
@@ -42,8 +46,8 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
       return;
     }
 
-    const value: { name: string, joined: string } = this.form.value;
-    this.teamService.addMember(value.name, this.githubId, new Date(value.joined).getTime());
+    const value: { name: string, departmentId: string, joined: string } = this.form.value;
+    this.teamService.addMember(value.name, this.githubId, value.departmentId, new Date(value.joined));
     this.form.reset();
     this.githubId = 0;
 
@@ -52,6 +56,16 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
 
   private loadGitHubId(username: string): Observable<number> {
     return this.httpClient.get<{ id: number }>(`https://api.github.com/users/${username}`)
-      .pipe(map(data => data.id));
+      .pipe(
+        map(data => data.id),
+        catchError(error => {
+          console.log(error);
+          return of(undefined);
+        })
+      );
+  }
+
+  get departments(): TeamDepartment[] {
+    return this.teamService.departments;
   }
 }

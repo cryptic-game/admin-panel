@@ -1,4 +1,5 @@
-<img [src]="'https://avatars.githubusercontent.com/u/' + githubId" alt="">
+<img *ngIf="githubId" [src]="'https://avatars.githubusercontent.com/u/' + githubId" alt="">
+<img *ngIf="!githubId" src="assets/user_not_found.svg" alt="">
 
 <form [formGroup]="form">
   <control-text-field>
@@ -11,6 +12,13 @@
     <label>
       GitHub Name
       <input formControlName="githubName" type="text">
+    </label>
+  </control-text-field>
+  <control-text-field [idField]="form.controls.departmentId" [valueField]="form.controls.departmentName"
+                      [values]="departments">
+    <label>
+      Department
+      <input formControlName="departmentName" type="text">
     </label>
   </control-text-field>
   <control-text-field>
