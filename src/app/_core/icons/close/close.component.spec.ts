@@ -10,7 +10,7 @@ describe('CloseComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CloseComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

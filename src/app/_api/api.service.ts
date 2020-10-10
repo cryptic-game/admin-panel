@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { EMPTY, Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -31,8 +31,7 @@ export class ApiService {
       }),
       catchError(error => {
         console.warn(`Error from server at endpoint ${endpoint}: ${error.status} ${error.statusText} - ${error.error?.error}`);
-        throwError(error);
-        return EMPTY;
+        throw error;
       })
     );
   }

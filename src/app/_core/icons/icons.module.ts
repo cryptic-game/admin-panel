@@ -16,14 +16,14 @@ import { CloseComponent } from './close/close.component';
     LogoComponent,
     CloseComponent
   ],
-    exports: [
-        LogoutComponent,
-        TeamComponent,
-        AddComponent,
-        SaveComponent,
-        LogoComponent,
-        CloseComponent
-    ],
+  exports: [
+    LogoutComponent,
+    TeamComponent,
+    AddComponent,
+    SaveComponent,
+    LogoComponent,
+    CloseComponent
+  ],
   imports: [
     CommonModule
   ]

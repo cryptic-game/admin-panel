@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          console.error(error);
+          console.warn(error);
           this.error = error.status;
           this.loading = false;
         }

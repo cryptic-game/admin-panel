@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'control-button',
@@ -14,4 +14,18 @@ export class ButtonComponent {
   @Input()
   @HostBinding('className')
   private type: 'default' | 'green' | 'yellow' | 'red' = 'default';
+
+  @Output()
+  private performClick: EventEmitter<void>;
+
+  constructor() {
+    this.performClick = new EventEmitter<void>();
+  }
+
+  @HostListener('click')
+  private onClick(): void {
+    if (!this.disabled) {
+      this.performClick.emit();
+    }
+  }
 }
