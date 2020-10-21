@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, switchMap, tap } from 'rxjs/operators';
+import { AccountService } from '../_core/account/account.service';
+import { DEFAULT_HEADERS } from './api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private defaultHeaders: HttpHeaders;
-
   constructor(
-    private httpClient: HttpClient
+    private readonly accountService: AccountService,
+    private readonly httpClient: HttpClient
   ) {
-    this.defaultHeaders = new HttpHeaders({ 'content-type': 'application/json; charset=utf-8' });
   }
 
   private static handleError(endpoint: string, errorResponse: HttpErrorResponse): HttpErrorResponse {
@@ -31,14 +31,24 @@ export class ApiService {
   }
 
   public endpoint<T>(endpoint: string, body?: object): Observable<HttpResponse<T>> {
-    return this.httpClient.post<T>(`${environment.apiBaseUrl}/${endpoint}`, body, {
-      headers: this.defaultHeaders,
-      observe: 'response'
-    }).pipe(
+    if (this.accountService.expired) {
+      return this.accountService.refreshAccessToken()
+        .pipe(switchMap(() => this.endpoint0<T>(endpoint, body)));
+    }
+    return this.endpoint0<T>(endpoint, body);
+  }
+
+  private endpoint0<T>(endpoint: string, body?: object): Observable<HttpResponse<T>> {
+    const response0 = body
+      ? this.httpClient.post<T>(`${environment.apiBaseUrl}/${endpoint}`, body,
+        { headers: DEFAULT_HEADERS, observe: 'response' })
+      : this.httpClient.get<T>(`${environment.apiBaseUrl}/${endpoint}`,
+        { headers: DEFAULT_HEADERS, observe: 'response' });
+
+    return response0.pipe(
       tap(response => {
         // @ts-ignore
         if (response.body.error) {
-          // @ts-ignore
           throwError(response);
         }
       }),

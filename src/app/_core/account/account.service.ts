@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../_api/api.service';
 import { Observable } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpResponse } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { OAuthAuthenticateResponse, User } from './account';
+import { environment } from '../../../environments/environment';
+import { DEFAULT_HEADERS } from '../../_api/api';
 
 @Injectable({
   providedIn: 'root'
@@ -16,27 +17,35 @@ export class AccountService {
   private user0: User;
   private expire: number;
 
+  private readonly httpClient: HttpClient;
+
   constructor(
-    private readonly apiService: ApiService,
+    private readonly httpBackend: HttpBackend,
     private readonly router: Router
   ) {
+    this.httpClient = new HttpClient(this.httpBackend);
+
     const jwt = sessionStorage.getItem('access_token');
     if (jwt) {
       this.jwt = jwt;
-    } else {
-      const refreshToken = localStorage.getItem('refresh_token');
-      if (refreshToken) {
-        const jwtDecode: { exp: number } = jwt_decode(refreshToken);
-        if ((jwtDecode.exp - 60 * 60 * 24 /*one day*/) <= (Date.now() / 1000)) {
-          this.logout();
-        } else {
-          this.refreshAccessToken().subscribe(
-            () => console.log('Successfully updated access token.'),
-            () => this.logout()
-          );
-        }
-      }
+      return;
     }
+
+    const refreshToken = localStorage.getItem('refresh_token');
+    if (!refreshToken) {
+      return;
+    }
+
+    const jwtDecode: { exp: number } = jwt_decode(refreshToken);
+    if ((jwtDecode.exp - 60 * 60 * 24 /*one day*/) <= (Date.now() / 1000)) {
+      this.logout();
+      return;
+    }
+
+    this.refreshAccessToken().subscribe(
+      () => console.log('Successfully updated access token.'),
+      () => this.logout()
+    );
   }
 
   get user(): User {
@@ -61,7 +70,8 @@ export class AccountService {
   }
 
   public authenticate(code: string): Observable<HttpResponse<OAuthAuthenticateResponse>> {
-    return this.apiService.endpoint<OAuthAuthenticateResponse>('authentication/oauth/callback', { code })
+    return this.httpClient.post<OAuthAuthenticateResponse>(`${environment.apiBaseUrl}/authentication/oauth/callback`,
+      { code }, { headers: DEFAULT_HEADERS, observe: 'response' })
       .pipe(tap(data => {
         localStorage.setItem('refresh_token', data.body.refresh_token);
         this.jwt = data.body.access_token;
@@ -70,7 +80,8 @@ export class AccountService {
 
   public refreshAccessToken(): Observable<HttpResponse<{ access_token: string }>> {
     const refreshToken: string = localStorage.getItem('refresh_token');
-    return this.apiService.endpoint<{ access_token: string }>('authentication/token/refresh', { refresh_token: refreshToken })
+    return this.httpClient.post<{ access_token: string }>(`${environment.apiBaseUrl}/authentication/token/refresh`,
+      { refresh_token: refreshToken }, { headers: DEFAULT_HEADERS, observe: 'response' })
       .pipe(tap(data => this.jwt = data.body.access_token));
   }
 
