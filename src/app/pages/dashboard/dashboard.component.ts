@@ -15,8 +15,7 @@ export class DashboardComponent {
     private readonly navigationService: NavigationService,
     private readonly teamService: TeamService
   ) {
-    this.navigationService.setTitle('Dashboard');
-    this.navigationService.updateVisibility(true);
+    this.navigationService.init('Dashboard');
     this.navigationService.showSlideOut(undefined);
     this.members = this.teamService.members?.length;
   }

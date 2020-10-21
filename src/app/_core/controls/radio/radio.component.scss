@@ -8,7 +8,6 @@ $hover-checked-color: $primary-dark;
 :host {
   display: inline-flex;
   flex-direction: row;
-  user-select: none;
   margin: $cube * 0.6 0;
 
   ::ng-deep label {

@@ -19,6 +19,12 @@ export class TextFieldComponent implements OnInit {
 
   currentValues: { id: string, name: string }[];
 
+  get selected(): boolean {
+    return this.currentValues.length === 1
+      && this.currentValues[0].id === this.idField.value
+      && this.currentValues[0].name === this.valueField.value;
+  }
+
   ngOnInit(): void {
     if (this.values) {
       this.valueField.valueChanges.subscribe(value => {
@@ -45,11 +51,5 @@ export class TextFieldComponent implements OnInit {
 
   trackBy(index: number, item: { id: string }): string {
     return item.id;
-  }
-
-  get selected(): boolean {
-    return this.currentValues.length === 1
-      && this.currentValues[0].id === this.idField.value
-      && this.currentValues[0].name === this.valueField.value;
   }
 }

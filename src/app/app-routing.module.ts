@@ -31,6 +31,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
   },
   {
+    path: 'access',
+    canActivate: [ AccountGuard ],
+    loadChildren: () => import('./pages/access/access.module').then(m => m.AccessModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
   }

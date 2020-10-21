@@ -20,13 +20,10 @@ export class NavigationService {
     this.slideOut = new Subject();
   }
 
-  public setTitle(title: string): void {
+  public init(title: string, hideNavigation?: boolean): void {
     this.angularTitle.setTitle(`${title} | Admin Panel`);
     this.title.next(title);
-  }
-
-  public updateVisibility(value: boolean): void {
-    this.visibility.next(value);
+    this.visibility.next(!hideNavigation);
   }
 
   public showSlideOut(slideOut: Type<SlideOutDelegate>): void {

@@ -10,16 +10,15 @@ import { AccountService } from '../../_core/account/account.service';
 })
 export class AccountComponent {
 
-  get user(): User {
-    return this.accountService.user;
-  }
-
   constructor(
     private readonly navigationService: NavigationService,
     private readonly accountService: AccountService
   ) {
-    this.navigationService.setTitle('Account');
-    this.navigationService.updateVisibility(true);
+    this.navigationService.init('Account');
     this.navigationService.showSlideOut(undefined);
+  }
+
+  get user(): User {
+    return this.accountService.user;
   }
 }

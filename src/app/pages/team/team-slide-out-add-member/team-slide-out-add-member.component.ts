@@ -4,7 +4,6 @@ import { interval, Observable, of } from 'rxjs';
 import { catchError, debounce, filter, map, mergeMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamService } from '../../../_api/team/team.service';
-import { NavigationService } from '../../../_core/navigation/navigation.service';
 import { TeamDepartment } from '../../../_api/team/team';
 import { SlideOutDelegate } from '../../../_core/navigation/slide-out/slide-out-delegate';
 
@@ -41,6 +40,10 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
       .subscribe(id => this.githubId = id);
   }
 
+  get departments(): TeamDepartment[] {
+    return this.teamService.departments;
+  }
+
   save(): void {
     if (!this.form.valid) {
       return;
@@ -63,9 +66,5 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
           return of(undefined);
         })
       );
-  }
-
-  get departments(): TeamDepartment[] {
-    return this.teamService.departments;
   }
 }

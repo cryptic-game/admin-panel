@@ -1,5 +1,5 @@
 <img *ngIf="githubId" [src]="'https://avatars.githubusercontent.com/u/' + githubId" alt="">
-<img *ngIf="!githubId" src="assets/user_not_found.svg" alt="">
+<img *ngIf="!githubId" alt="" src="assets/user_not_found.svg">
 
 <form [formGroup]="form">
   <control-text-field>
@@ -29,7 +29,7 @@
   </control-text-field>
 </form>
 
-<control-button (performClick)="save()" class="button" type="green" [disabled]="!form.valid">
+<control-button (performClick)="save()" [disabled]="!form.valid" class="button" type="green">
   <icon-save controlIcon></icon-save>
   <span>Save</span>
 </control-button>

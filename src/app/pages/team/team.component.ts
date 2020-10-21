@@ -22,8 +22,7 @@ export class TeamComponent {
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router
   ) {
-    this.navigationService.setTitle('Team');
-    this.navigationService.updateVisibility(true);
+    this.navigationService.init('Team');
     this.navigationService.showSlideOut(undefined);
     this.departmentFilter = new FormControl(this.departmentId || 'all');
     this.departmentFilter.valueChanges.subscribe(value => this.router.navigate([ 'team', value ]));

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -17,6 +17,19 @@ export class ApiService {
     this.defaultHeaders = new HttpHeaders({ 'content-type': 'application/json; charset=utf-8' });
   }
 
+  private static handleError(endpoint: string, errorResponse: HttpErrorResponse): HttpErrorResponse {
+    if (errorResponse.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', errorResponse.error.message);
+    } else if (errorResponse.status) {
+      console.warn(`Error from server at endpoint ${endpoint}: ${errorResponse.status} ${errorResponse.statusText} - ${errorResponse.error?.error}`);
+    } else {
+      console.error(errorResponse);
+    }
+
+    return errorResponse;
+  }
+
   public endpoint<T>(endpoint: string, body?: object): Observable<HttpResponse<T>> {
     return this.httpClient.post<T>(`${environment.apiBaseUrl}/${endpoint}`, body, {
       headers: this.defaultHeaders,
@@ -29,9 +42,8 @@ export class ApiService {
           throwError(response);
         }
       }),
-      catchError(error => {
-        console.warn(`Error from server at endpoint ${endpoint}: ${error.status} ${error.statusText} - ${error.error?.error}`);
-        throw error;
+      catchError(errorResponse => {
+        throw ApiService.handleError(endpoint, errorResponse);
       })
     );
   }

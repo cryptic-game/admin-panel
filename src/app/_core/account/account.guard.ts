@@ -15,6 +15,7 @@ export class AccountGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    console.log(localStorage.getItem('refresh_token'));
     if (localStorage.getItem('refresh_token')) {
       return true;
     }

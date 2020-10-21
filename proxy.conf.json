@@ -4,6 +4,7 @@
     "pathRewrite": {
       "^/api": ""
     },
-    "secure": false
+    "secure": false,
+    "changeOrigin": true
   }
 }

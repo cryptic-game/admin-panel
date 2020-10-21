@@ -11,8 +11,7 @@ export class NotFoundComponent {
   constructor(
     private readonly navigationService: NavigationService
   ) {
-    this.navigationService.setTitle('Not Found');
-    this.navigationService.updateVisibility(false);
+    this.navigationService.init('Not Found', true);
     this.navigationService.showSlideOut(undefined);
   }
 }

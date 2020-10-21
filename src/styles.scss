@@ -5,6 +5,7 @@
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
 
   /* Firefox */
   scrollbar-width: thin;
@@ -45,4 +46,4 @@ html {
   }
 }
 
-@import "scss/base/font", "scss/base/a";
+@import "scss/base/font", "scss/base/a", "scss/base/table";

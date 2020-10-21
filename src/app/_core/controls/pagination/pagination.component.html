@@ -1,0 +1,7 @@
+<button (click)="changePage(-1)" [disabled]="currentPage0 <= 1">
+  <icon-arrow-left></icon-arrow-left>
+</button>
+<span>{{currentPage0}}/{{pageCount0}}</span>
+<button (click)="changePage(1)" [disabled]="pageCount0 === currentPage0">
+  <icon-arrow-right></icon-arrow-right>
+</button>

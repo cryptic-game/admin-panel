@@ -39,6 +39,13 @@ export class SlideOutComponent implements OnChanges {
     }
   }
 
+  close(): void {
+    if (this.currentSubscription) {
+      this.currentSubscription.unsubscribe();
+    }
+    this.navigationService.showSlideOut(undefined);
+  }
+
   private loadComponent(component: Type<SlideOutDelegate>): void {
     if (component) {
       this.currentSubscription = this.outlet.viewContainerRef.createComponent(this.componentFactory.resolveComponentFactory(component))
@@ -49,12 +56,5 @@ export class SlideOutComponent implements OnChanges {
           this.close();
         });
     }
-  }
-
-  close(): void {
-    if (this.currentSubscription) {
-      this.currentSubscription.unsubscribe();
-    }
-    this.navigationService.showSlideOut(undefined);
   }
 }

@@ -23,8 +23,7 @@ export class LoginComponent implements OnInit {
     private readonly apiService: ApiService,
     private readonly router: Router
   ) {
-    this.navigationService.setTitle('Login');
-    this.navigationService.updateVisibility(false);
+    this.navigationService.init('Login', true);
     this.navigationService.showSlideOut(undefined);
   }
 

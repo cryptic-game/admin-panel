@@ -1,0 +1,19 @@
+@import "variables", "color-scheme";
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr {
+
+    th, td {
+      padding: $cube;
+      border-bottom: $cube * 0.1 solid $secondary-lighter;
+      text-align: left;
+    }
+
+    th {
+      font-weight: $bold-font-weight;
+    }
+  }
+}

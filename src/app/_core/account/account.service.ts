@@ -16,27 +16,6 @@ export class AccountService {
   private user0: User;
   private expire: number;
 
-  get user(): User {
-    return this.user0;
-  }
-
-  get jwt(): string {
-    return this.jwt0;
-  }
-
-  set jwt(jwt: string) {
-    const data: User & { exp: number } = jwt_decode(jwt);
-    this.jwt0 = jwt;
-    this.user0 = data;
-    this.expire = data.exp;
-
-    sessionStorage.setItem('access_token', jwt);
-  }
-
-  get expired(): boolean {
-    return this.expire && this.expire <= Date.now() / 1000;
-  }
-
   constructor(
     private readonly apiService: ApiService,
     private readonly router: Router
@@ -58,6 +37,27 @@ export class AccountService {
         }
       }
     }
+  }
+
+  get user(): User {
+    return this.user0;
+  }
+
+  get jwt(): string {
+    return this.jwt0;
+  }
+
+  set jwt(jwt: string) {
+    const data: User & { exp: number } = jwt_decode(jwt);
+    this.jwt0 = jwt;
+    this.user0 = data;
+    this.expire = data.exp;
+
+    sessionStorage.setItem('access_token', jwt);
+  }
+
+  get expired(): boolean {
+    return this.expire && this.expire <= Date.now() / 1000;
   }
 
   public authenticate(code: string): Observable<HttpResponse<OAuthAuthenticateResponse>> {
@@ -82,6 +82,6 @@ export class AccountService {
     this.expire = undefined;
 
     // @ts-ignore
-    this.router.navigate(['/login']).then(console.log('See you later!'));
+    this.router.navigate([ '/login' ]).then(console.log('See you later!'));
   }
 }

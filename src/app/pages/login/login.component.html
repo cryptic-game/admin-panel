@@ -11,7 +11,7 @@
   <span *ngIf="!loading">Login with GitHub</span>
 </control-button>
 
-<span class="error" *ngIf="error">
+<span *ngIf="error" class="error">
   Login failed!
   <br>
 
@@ -23,8 +23,8 @@
     Please try again. If the error persists,
     <br>
     create a
-    <a href="https://github.com/cryptic-game/admin-panel/issues/new?labels=bug&template=BUG_REPORT.md" target="_blank"
-       rel="noreferrer">Bug Report</a>
+    <a href="https://github.com/cryptic-game/admin-panel/issues/new?labels=bug&template=BUG_REPORT.md" rel="noreferrer"
+       target="_blank">Bug Report</a>
     on GitHub.
     <br>
     Do not forget to take a look into the console.

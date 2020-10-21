@@ -1,0 +1,43 @@
+@import "variables", "color-scheme";
+
+$border-radius: $cube * 0.4;
+
+:host {
+  display: inline-flex;
+  flex-direction: row;
+  margin: $cube * 0.6 0;
+  border: $cube * 0.1 solid $primary-dark;
+  border-radius: $border-radius;
+  background-color: transparentize($primary-dark, 0.8);
+
+  span {
+    display: flex;
+    align-items: center;
+    border-left: $cube * 0.1 solid $primary-dark;
+    border-right: $cube * 0.1 solid $primary-dark;
+    padding: 0 $cube * 2;
+  }
+
+  button, span {
+    font-size: $text-font-size;
+    font-weight: $normal-font-weight;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: $cube * 4;
+    height: $cube * 4;
+    padding: $cube * 0.6;
+    transition: background-color $transition $transition-type;
+
+    &:not([disabled]) {
+      cursor: pointer;
+
+      &:hover {
+        background: $primary;
+      }
+    }
+  }
+}
