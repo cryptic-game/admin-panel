@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationService } from '../../_core/navigation/navigation.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AccessService } from '../../_api/access/access.service';
+import { AdminUser } from '../../_api/access/access';
 
 @Component({
   selector: 'admin-access',
@@ -9,19 +10,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AccessComponent {
 
-  currentPage = '0';
-
   constructor(
     private readonly navigationService: NavigationService,
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly router: Router
+    private readonly accessService: AccessService
   ) {
     this.navigationService.init('Access');
     this.navigationService.showSlideOut(undefined);
-    this.activatedRoute.params.subscribe(value => this.currentPage = value.page || '1');
   }
 
-  setPage(page: number): void {
-    this.router.navigate([ 'access', page ]).then();
+  getGroupDisplay(user: AdminUser): string {
+    return user.groups.map(group => this.accessService.getGroup(group).display_name).join(', ');
+  }
+
+  get users(): AdminUser[] {
+    return this.accessService.users;
+  }
+
+  trackBy(index: number, item: AdminUser): number {
+    return item.id;
+  }
+
+  delete(userId: number): void {
+    this.accessService.deleteUser(userId).subscribe(console.log);
   }
 }

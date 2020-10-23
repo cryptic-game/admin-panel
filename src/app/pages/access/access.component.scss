@@ -3,3 +3,14 @@
 .button {
   width: 5%;
 }
+
+td.avatar {
+  width: 0.1%;
+  padding-top: 1.85 * $cube;
+
+  img {
+    width: 4 * $cube;
+    height: 4 * $cube;
+    border-radius: 50%;
+  }
+}

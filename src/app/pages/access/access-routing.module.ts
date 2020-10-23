@@ -4,8 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccessComponent } from './access.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '1' },
-  { path: ':page', component: AccessComponent }
+  { path: '', component: AccessComponent }
 ];
 
 @NgModule({

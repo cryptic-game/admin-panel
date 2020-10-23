@@ -1,40 +1,26 @@
 <page-layout>
   <page-header>
-    <span>css</span>
-    <control-pagination (page)="setPage($event)" [currentPage]="currentPage" pageCount="10"></control-pagination>
   </page-header>
   <page-body>
     <table>
       <tr>
+        <th></th>
         <th>Name</th>
         <th>Group(s)</th>
         <th>Edit</th>
         <th>Remove</th>
       </tr>
-      <tr>
-        <td>Gustaf</td>
-        <td>Admin</td>
+      <tr *ngFor="let user of users; trackBy: trackBy">
+        <td class="avatar"><img [src]="user.avatar_url" alt=""></td>
+        <td>{{user.name || user.id}}</td>
+        <td>{{getGroupDisplay(user)}}</td>
         <td class="button">
           <control-button>
             <icon-edit controlIcon></icon-edit>
           </control-button>
         </td>
         <td class="button">
-          <control-button type="red">
-            <icon-remove controlIcon></icon-remove>
-          </control-button>
-        </td>
-      </tr>
-      <tr>
-        <td>Peter</td>
-        <td>Content</td>
-        <td class="button">
-          <control-button>
-            <icon-edit controlIcon></icon-edit>
-          </control-button>
-        </td>
-        <td class="button">
-          <control-button type="red">
+          <control-button (performClick)="delete(user.id)" type="red">
             <icon-remove controlIcon></icon-remove>
           </control-button>
         </td>
