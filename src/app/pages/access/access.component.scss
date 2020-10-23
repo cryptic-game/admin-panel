@@ -1,4 +1,4 @@
-@import "variables";
+@import "variables", "color-scheme";
 
 .button {
   width: 5%;
@@ -6,11 +6,16 @@
 
 td.avatar {
   width: 0.1%;
-  padding-top: 1.85 * $cube;
+  padding: 1 * $cube;
 
-  img {
+  img, .no-avatar {
     width: 4 * $cube;
     height: 4 * $cube;
     border-radius: 50%;
+
+    &.no-avatar {
+      display: block;
+      fill: $text-color;
+    }
   }
 }

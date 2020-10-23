@@ -11,6 +11,7 @@ import { RemoveComponent } from './remove/remove.component';
 import { EditComponent } from './edit/edit.component';
 import { ArrowLeftComponent } from './arrow-left/arrow-left.component';
 import { ArrowRightComponent } from './arrow-right/arrow-right.component';
+import { NoAvatarComponent } from './no-avatar/no-avatar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ArrowRightComponent } from './arrow-right/arrow-right.component';
     RemoveComponent,
     EditComponent,
     ArrowLeftComponent,
-    ArrowRightComponent
+    ArrowRightComponent,
+    NoAvatarComponent
   ],
   exports: [
     LogoutComponent,
@@ -37,7 +39,8 @@ import { ArrowRightComponent } from './arrow-right/arrow-right.component';
     RemoveComponent,
     EditComponent,
     ArrowLeftComponent,
-    ArrowRightComponent
+    ArrowRightComponent,
+    NoAvatarComponent
   ],
   imports: [
     CommonModule

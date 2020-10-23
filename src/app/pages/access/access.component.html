@@ -11,7 +11,12 @@
         <th>Remove</th>
       </tr>
       <tr *ngFor="let user of users; trackBy: trackBy">
-        <td class="avatar"><img [src]="user.avatar_url" alt=""></td>
+        <td class="avatar">
+          <img *ngIf="user.avatar_url; else noAvatar" [src]="user.avatar_url" alt="">
+          <ng-template #noAvatar>
+            <icon-no-avatar class="no-avatar"></icon-no-avatar>
+          </ng-template>
+        </td>
         <td>{{user.name || user.id}}</td>
         <td>{{getGroupDisplay(user)}}</td>
         <td class="button">
