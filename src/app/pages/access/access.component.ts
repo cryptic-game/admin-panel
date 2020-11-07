@@ -46,7 +46,7 @@ export class AccessComponent {
         throw error;
       }))
       .subscribe(data => {
-        this.notificationService.sendNotification(`Successfully removed ${data.name} from Admin Panel.`, 'success');
+        this.notificationService.sendNotification(`Successfully removed ${data}.`, 'success');
       });
   }
 }

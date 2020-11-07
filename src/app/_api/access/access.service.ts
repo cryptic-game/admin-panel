@@ -49,7 +49,7 @@ export class AccessService {
       );
   }
 
-  public deleteUser(userId: number): Observable<{ name: string }> {
+  public deleteUser(userId: number): Observable<string> {
     return this.apiService.endpoint('authentication/user/delete', { id: userId })
       .pipe(
         map(() => {
@@ -58,7 +58,6 @@ export class AccessService {
             if (user.id !== userId) {
               return true;
             }
-            console.log(user);
             name = user.name;
             return false;
           });
