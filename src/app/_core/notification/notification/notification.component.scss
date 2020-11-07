@@ -1,0 +1,59 @@
+@import "variables", "color-scheme";
+
+:host {
+  margin: 0 $cube * 2 $cube * 2 0;
+  width: $cube * 40;
+
+  box-shadow: $box-shadow;
+
+  display: flex;
+  flex-direction: column;
+
+  div.line {
+    width: 100%;
+    height: $cube * 0.4;
+    margin-bottom: $cube * 1.6;
+    transition: width 1s linear;
+  }
+
+  span.text {
+    padding: 0 $cube * 2 $cube * 1.8;
+    color: $bright;
+  }
+
+  &.info {
+    background-color: $blue;
+
+    div.line {
+      background-color: $blue-dark;
+    }
+  }
+
+  &.success {
+    background-color: $green;
+
+    div.line {
+      background-color: $green-dark;
+    }
+  }
+
+  &.warning {
+    background-color: $yellow-dark;
+
+    div.line {
+      background-color: darken($yellow-dark, 10%);
+    }
+
+    span.text {
+      color: $dark-text-color !important;
+    }
+  }
+
+  &.error {
+    background-color: $red;
+
+    div.line {
+      background-color: darken($red-dark, 10%);
+    }
+  }
+}

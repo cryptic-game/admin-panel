@@ -49,14 +49,24 @@ export class AccessService {
       );
   }
 
-  public deleteUser(userId: number): Observable<string> {
-    return this.apiService.endpoint<void>('authentication/user/delete', { id: userId })
+  public deleteUser(userId: number): Observable<{ name: string }> {
+    return this.apiService.endpoint('authentication/user/delete', { id: userId })
       .pipe(
         map(() => {
-          this.users = this.users.filter(user => user.id !== userId);
-          return undefined;
+          let name;
+          this.users = this.users.filter(user => {
+            if (user.id !== userId) {
+              return true;
+            }
+            console.log(user);
+            name = user.name;
+            return false;
+          });
+          return name;
         }),
-        catchError(error => of(error.error.error))
+        catchError(error => {
+          throw error.error.error;
+        })
       );
   }
 }
