@@ -19,6 +19,8 @@ export class SlideOutComponent implements OnChanges {
 
   private currentSubscription: Subscription;
 
+  title: string;
+
   constructor(
     private readonly navigationService: NavigationService,
     private readonly componentFactory: ComponentFactoryResolver
@@ -48,13 +50,14 @@ export class SlideOutComponent implements OnChanges {
 
   private loadComponent(component: Type<SlideOutDelegate>): void {
     if (component) {
-      this.currentSubscription = this.outlet.viewContainerRef.createComponent(this.componentFactory.resolveComponentFactory(component))
-        .instance.close0.subscribe(() => {
-          if (this.currentSubscription) {
-            this.currentSubscription.unsubscribe();
-          }
-          this.close();
-        });
+      const instance = this.outlet.viewContainerRef.createComponent(this.componentFactory.resolveComponentFactory(component)).instance;
+      this.title = instance.title;
+      this.currentSubscription = instance.close0.subscribe(() => {
+        if (this.currentSubscription) {
+          this.currentSubscription.unsubscribe();
+        }
+        this.close();
+      });
     }
   }
 }

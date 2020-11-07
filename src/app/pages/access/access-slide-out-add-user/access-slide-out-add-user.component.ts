@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { interval, Observable, of } from 'rxjs';
-import { catchError, debounce, filter, map, mergeMap } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TeamService } from '../../../_api/team/team.service';
-import { TeamDepartment } from '../../../_api/team/team';
 import { SlideOutDelegate } from '../../../_core/navigation/slide-out/slide-out-delegate';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { catchError, debounce, filter, map, mergeMap } from 'rxjs/operators';
+import { interval, Observable, of } from 'rxjs';
+import { AccessService } from '../../../_api/access/access.service';
+import { AdminGroup } from '../../../_api/access/access';
 
 @Component({
-  selector: 'admin-team-slide-out-add-member',
-  templateUrl: './team-slide-out-add-member.component.html',
-  styleUrls: [ './team-slide-out-add-member.component.scss' ]
+  selector: 'admin-access-slide-out-add-user',
+  templateUrl: './access-slide-out-add-user.component.html',
+  styleUrls: [ './access-slide-out-add-user.component.scss' ]
 })
-export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
+export class AccessSlideOutAddUserComponent extends SlideOutDelegate {
 
   form: FormGroup;
   githubId = 0;
@@ -20,15 +20,12 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly httpClient: HttpClient,
-    private readonly teamService: TeamService
+    private readonly accessService: AccessService
   ) {
-    super('Add Member');
+    super('Add User');
     this.form = this.formBuilder.group({
-      name: [ '', Validators.required ],
       githubName: [ '', Validators.required ],
-      departmentId: [ '', Validators.required ],
-      departmentName: [ '', Validators.required ],
-      joined: [ '', Validators.required ]
+      adminGroups: this.formBuilder.array([ this.formBuilder.control('') ])
     });
 
     this.form.controls.githubName.valueChanges
@@ -38,10 +35,13 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
         mergeMap(value => this.loadGitHubId(value))
       )
       .subscribe(id => this.githubId = id);
+
+    this.form.controls.adminGroups.valueChanges
+      .subscribe(value => console.log(value));
   }
 
-  get departments(): TeamDepartment[] {
-    return this.teamService.departments;
+  get adminGroups(): AdminGroup[] {
+    return this.accessService.groups;
   }
 
   save(): void {
@@ -49,8 +49,8 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
       return;
     }
 
-    const value: { name: string, departmentId: string, joined: string } = this.form.value;
-    this.teamService.addMember(value.name, this.githubId, value.departmentId, new Date(value.joined));
+    const value: { /* Admin Groups */ } = this.form.value;
+    // send to server
     this.form.reset();
     this.githubId = 0;
 
