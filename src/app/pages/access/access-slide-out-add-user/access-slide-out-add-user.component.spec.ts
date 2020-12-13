@@ -10,7 +10,7 @@ describe('AccessSlideOutAddUserComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ AccessSlideOutAddUserComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -24,6 +24,26 @@ export class AccessService {
     return !this.groups ? null : this.groups.find(group => group.id === groupId);
   }
 
+  public deleteUser(userId: number): Observable<string> {
+    return this.apiService.endpoint('authentication/user/delete', { id: userId })
+      .pipe(
+        map(() => {
+          let name;
+          this.users = this.users.filter(user => {
+            if (user.id !== userId) {
+              return true;
+            }
+            name = user.name;
+            return false;
+          });
+          return name;
+        }),
+        catchError(error => {
+          throw error.error.error;
+        })
+      );
+  }
+
   private updateCache(): void {
     forkJoin({
       groups: this.apiService.endpoint<AdminGroup[]>('authentication/group/list'),
@@ -45,26 +65,6 @@ export class AccessService {
         catchError(error => {
           console.log(error);
           return of(undefined);
-        })
-      );
-  }
-
-  public deleteUser(userId: number): Observable<string> {
-    return this.apiService.endpoint('authentication/user/delete', { id: userId })
-      .pipe(
-        map(() => {
-          let name;
-          this.users = this.users.filter(user => {
-            if (user.id !== userId) {
-              return true;
-            }
-            name = user.name;
-            return false;
-          });
-          return name;
-        }),
-        catchError(error => {
-          throw error.error.error;
         })
       );
   }

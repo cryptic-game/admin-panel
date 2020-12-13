@@ -10,7 +10,7 @@ describe('NoAvatarComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ NoAvatarComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

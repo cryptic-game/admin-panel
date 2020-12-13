@@ -4,7 +4,6 @@ import { AccessService } from '../../_api/access/access.service';
 import { AdminUser } from '../../_api/access/access';
 import { catchError } from 'rxjs/operators';
 import { NotificationService } from '../../_core/notification/notification.service';
-import { TeamSlideOutAddMemberComponent } from '../team/team-slide-out-add-member/team-slide-out-add-member.component';
 import { AccessSlideOutAddUserComponent } from './access-slide-out-add-user/access-slide-out-add-user.component';
 
 @Component({

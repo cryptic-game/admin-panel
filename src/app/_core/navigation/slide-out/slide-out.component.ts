@@ -11,15 +11,12 @@ import { Subscription } from 'rxjs';
 })
 export class SlideOutComponent implements OnChanges {
 
+  title: string;
   @Input()
   private slideOut: Type<SlideOutDelegate>;
-
   @ViewChild(SlideOutOutletDirective, { static: true })
   private outlet: SlideOutOutletDirective;
-
   private currentSubscription: Subscription;
-
-  title: string;
 
   constructor(
     private readonly navigationService: NavigationService,
