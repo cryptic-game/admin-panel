@@ -14,15 +14,15 @@ import { NotificationModule } from './_core/notification/notification.module';
   declarations: [
     AppComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NavigationModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        NotificationModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NavigationModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NotificationModule
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorInterceptor, multi: true }
   ],
