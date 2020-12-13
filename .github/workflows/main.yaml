@@ -1,0 +1,74 @@
+name: Main
+
+on: [ push ]
+
+jobs:
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+
+      - run: npm run lint
+
+#  test:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: 14
+#
+#      - uses: actions/cache@v2
+#        with:
+#          path: ~/.npm
+#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#          restore-keys: |
+#            ${{ runner.os }}-node-
+#
+#      - run: npm ci
+#
+#      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+
+  build:
+    needs: [ lint ] # test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+
+      - run: npm run build:ci -- --output-path=./dist
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: admin-panel
+          path: dist
