@@ -16,7 +16,7 @@
     </control-button>
   </page-header>
   <page-body [class.error]="!this.members?.length" class="grid">
-    <admin-team-member *ngFor="let member of this.members; trackBy: trackBy" [member]="member"></admin-team-member>
+    <admin-team-member (click)="showEditMemberSlideOut(member)" *ngFor="let member of this.members; trackBy: trackBy" [member]="member"></admin-team-member>
     <div *ngIf="!this.members?.length" class="error">
       <h1>Nothing found</h1>
       <p>This department has no members.</p>

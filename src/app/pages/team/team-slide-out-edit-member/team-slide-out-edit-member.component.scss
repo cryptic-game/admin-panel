@@ -1,0 +1,21 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 40%;
+    border-radius: 50%;
+    margin-bottom: $cube * 2;
+    align-self: center;
+  }
+
+  img, form {
+    margin-bottom: $cube * 2;
+  }
+
+  form, .button {
+    width: 100%;
+  }
+}

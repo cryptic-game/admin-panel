@@ -19,6 +19,6 @@ export class TeamMemberComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.department = this.teamService.getDepartment(this.member.department_id);
+    this.department = this.teamService.getDepartment(this.member.department_id); // TODO Update department name after department change
   }
 }

@@ -1,0 +1,35 @@
+<img *ngIf="member.github_id" [src]="'https://avatars.githubusercontent.com/u/' + member.github_id" alt="">
+<img *ngIf="!member.github_id" alt="" src="assets/user_not_found.svg">
+
+<form [formGroup]="form">
+  <control-text-field>
+    <label>
+      Name
+      <input formControlName="name" type="text">
+    </label>
+  </control-text-field>
+  <control-text-field>
+    <label>
+      GitHub Name
+      <input formControlName="githubName" type="text">
+    </label>
+  </control-text-field>
+  <control-text-field [idField]="form.controls.departmentId" [valueField]="form.controls.departmentName"
+                      [values]="departments">
+    <label>
+      Department
+      <input formControlName="departmentName" type="text">
+    </label>
+  </control-text-field>
+  <control-text-field>
+    <label>
+      Joined
+      <input formControlName="joined" type="date">
+    </label>
+  </control-text-field>
+</form>
+
+<control-button (performClick)="save()" [disabled]="!form.valid" class="button" type="green">
+  <icon-save controlIcon></icon-save>
+  <span>Save</span>
+</control-button>

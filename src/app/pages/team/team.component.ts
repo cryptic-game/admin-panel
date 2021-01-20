@@ -5,6 +5,7 @@ import { TeamDepartment, TeamMember } from '../../_api/team/team';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { TeamSlideOutAddMemberComponent } from './team-slide-out-add-member/team-slide-out-add-member.component';
+import { TeamSlideOutEditMemberComponent } from './team-slide-out-edit-member/team-slide-out-edit-member.component';
 
 @Component({
   selector: 'admin-team',
@@ -48,5 +49,16 @@ export class TeamComponent {
 
   showAddMemberSlideOut(): void {
     this.navigationService.showSlideOut(TeamSlideOutAddMemberComponent);
+  }
+
+  showEditMemberSlideOut(member: TeamMember): void {
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { edit: member.id },
+        queryParamsHandling: 'merge'
+      })
+      .then(() => this.navigationService.showSlideOut(TeamSlideOutEditMemberComponent));
   }
 }
