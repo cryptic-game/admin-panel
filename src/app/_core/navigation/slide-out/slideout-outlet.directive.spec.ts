@@ -1,4 +1,4 @@
-import { SlideOutOutletDirective } from './slide-out-outlet.directive';
+import {SlideOutOutletDirective} from './slide-out-outlet.directive';
 
 describe('SlideOutOutletDirective', () => {
   it('should create an instance', () => {

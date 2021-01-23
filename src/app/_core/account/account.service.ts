@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpBackend, HttpClient, HttpResponse } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpBackend, HttpClient, HttpResponse} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
-import { Router } from '@angular/router';
-import { OAuthAuthenticateResponse, User } from './account';
-import { environment } from '../../../environments/environment';
-import { DEFAULT_HEADERS } from '../../_api/api';
+import {Router} from '@angular/router';
+import {OAuthAuthenticateResponse, User} from './account';
+import {environment} from '../../../environments/environment';
+import {DEFAULT_HEADERS} from '../../_api/api';
 
 @Injectable({
   providedIn: 'root'
@@ -71,18 +71,18 @@ export class AccountService {
 
   public authenticate(code: string): Observable<HttpResponse<OAuthAuthenticateResponse>> {
     return this.httpClient.post<OAuthAuthenticateResponse>(`${environment.apiBaseUrl}/authentication/oauth/callback`,
-      { code }, { headers: DEFAULT_HEADERS, observe: 'response' })
-      .pipe(tap(data => {
-        localStorage.setItem('refresh_token', data.body.refresh_token);
-        this.jwt = data.body.access_token;
-      }));
+      {code}, {headers: DEFAULT_HEADERS, observe: 'response'})
+    .pipe(tap(data => {
+      localStorage.setItem('refresh_token', data.body.refresh_token);
+      this.jwt = data.body.access_token;
+    }));
   }
 
   public refreshAccessToken(): Observable<HttpResponse<{ access_token: string }>> {
     const refreshToken: string = localStorage.getItem('refresh_token');
     return this.httpClient.post<{ access_token: string }>(`${environment.apiBaseUrl}/authentication/token/refresh`,
-      { refresh_token: refreshToken }, { headers: DEFAULT_HEADERS, observe: 'response' })
-      .pipe(tap(data => this.jwt = data.body.access_token));
+      {refresh_token: refreshToken}, {headers: DEFAULT_HEADERS, observe: 'response'})
+    .pipe(tap(data => this.jwt = data.body.access_token));
   }
 
   public logout(): void {
@@ -93,6 +93,6 @@ export class AccountService {
     this.expire = undefined;
 
     // @ts-ignore
-    this.router.navigate([ '/login' ]).then(console.log('See you later!'));
+    this.router.navigate(['/login']).then(console.log('See you later!'));
   }
 }

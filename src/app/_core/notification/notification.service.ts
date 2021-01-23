@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Notification } from './notification';
+import {Injectable} from '@angular/core';
+import {Notification} from './notification';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class NotificationService {
   }
 
   public sendNotification(text: string, type: 'info' | 'success' | 'warning' | 'error'): void {
-    this.notifications.push({ id: this.id, text, type, time: 11 });
+    this.notifications.push({id: this.id, text, type, time: 11});
     this.id++;
   }
 

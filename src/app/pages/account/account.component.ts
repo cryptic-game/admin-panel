@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { NavigationService } from '../../_core/navigation/navigation.service';
-import { User } from '../../_core/account/account';
-import { AccountService } from '../../_core/account/account.service';
+import {Component} from '@angular/core';
+import {NavigationService} from '../../_core/navigation/navigation.service';
+import {User} from '../../_core/account/account';
+import {AccountService} from '../../_core/account/account.service';
 
 @Component({
-  selector: 'admin-account',
+  selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: [ './account.component.scss' ]
+  styleUrls: ['./account.component.scss']
 })
 export class AccountComponent {
 

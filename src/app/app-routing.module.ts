@@ -1,35 +1,37 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AccountGuard } from './_core/account/account.guard';
-import { LoginGuard } from './_core/account/login.guard';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AccountGuard} from './_core/account/account.guard';
+import {LoginGuard} from './_core/account/login.guard';
 
 const routes: Routes = [
-  { path: '',
+  {
+    path: '',
     pathMatch: 'full',
-    redirectTo: 'dashboard' },
+    redirectTo: 'dashboard'
+  },
   {
     path: 'dashboard',
-    canActivate: [ AccountGuard ],
+    canActivate: [AccountGuard],
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: 'account',
-    canActivate: [ AccountGuard ],
+    canActivate: [AccountGuard],
     loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule)
   },
   {
     path: 'team',
-    canActivate: [ AccountGuard ],
+    canActivate: [AccountGuard],
     loadChildren: () => import('./pages/team/team.module').then(m => m.TeamModule)
   },
   {
     path: 'login',
-    canActivate: [ LoginGuard ],
+    canActivate: [LoginGuard],
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'access',
-    canActivate: [ AccountGuard ],
+    canActivate: [AccountGuard],
     loadChildren: () => import('./pages/access/access.module').then(m => m.AccessModule)
   },
   {
@@ -39,8 +41,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes, {relativeLinkResolution: 'legacy'})],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

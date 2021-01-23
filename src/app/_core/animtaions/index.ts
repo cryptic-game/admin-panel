@@ -1,1 +1,1 @@
-export { slideFromRight } from './slide-from-right';
+export {slideFromRight} from './slide-from-right';

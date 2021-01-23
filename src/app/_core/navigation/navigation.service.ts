@@ -1,7 +1,7 @@
-import { Injectable, Type } from '@angular/core';
-import { Subject } from 'rxjs';
-import { Title } from '@angular/platform-browser';
-import { SlideOutDelegate } from './slide-out/slide-out-delegate';
+import {Injectable, Type} from '@angular/core';
+import {Subject} from 'rxjs';
+import {Title} from '@angular/platform-browser';
+import {SlideOutDelegate} from './slide-out/slide-out-delegate';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class NavigationService {
     this.visibility.next(!hideNavigation);
   }
 
-  public showSlideOut(slideOut: Type<SlideOutDelegate>): void {
+  public showSlideOut(slideOut?: Type<SlideOutDelegate>): void {
     this.slideOut.next(slideOut);
   }
 }

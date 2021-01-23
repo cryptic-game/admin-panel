@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { NavigationService } from '../../_core/navigation/navigation.service';
+import {Component} from '@angular/core';
+import {NavigationService} from '../../_core/navigation/navigation.service';
 
 @Component({
-  selector: 'admin-dashboard',
+  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.scss' ]
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
 

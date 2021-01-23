@@ -1,10 +1,10 @@
-import { Component, HostBinding, Input } from '@angular/core';
-import { Notification } from '../notification';
+import {Component, HostBinding, Input} from '@angular/core';
+import {Notification} from '../notification';
 
 @Component({
-  selector: 'admin-notification',
+  selector: 'app-notification',
   templateUrl: './notification.component.html',
-  styleUrls: [ './notification.component.scss' ]
+  styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent {
 

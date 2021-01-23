@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {AbstractControl} from '@angular/forms';
 
 @Component({
   selector: 'control-text-field',
   templateUrl: './text-field.component.html',
-  styleUrls: [ './text-field.component.scss' ]
+  styleUrls: ['./text-field.component.scss']
 })
 export class TextFieldComponent implements OnInit {
 
@@ -15,9 +15,9 @@ export class TextFieldComponent implements OnInit {
   valueField: AbstractControl;
 
   @Input()
-  values: { id: string, name: string }[];
+  values: { id: string; name: string }[];
 
-  currentValues: { id: string, name: string }[];
+  currentValues: { id: string; name: string }[];
 
   get selected(): boolean {
     return this.currentValues.length === 1
@@ -44,7 +44,7 @@ export class TextFieldComponent implements OnInit {
     }
   }
 
-  select(value: { id: string, name: string }): void {
+  select(value: { id: string; name: string }): void {
     this.idField.setValue(value.id);
     this.valueField.setValue(value.name);
   }

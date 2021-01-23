@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { TeamMemberComponent } from './team-member.component';
+import {TeamMemberComponent} from './team-member.component';
 
 describe('TeamMemberComponent', () => {
   let component: TeamMemberComponent;
@@ -8,9 +8,9 @@ describe('TeamMemberComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamMemberComponent ]
+      declarations: [TeamMemberComponent]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { ApiService } from '../api.service';
-import { forkJoin, Observable, of } from 'rxjs';
-import { AdminGroup, AdminUser } from './access';
-import { HttpClient } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {ApiService} from '../api.service';
+import {forkJoin, Observable, of} from 'rxjs';
+import {AdminGroup, AdminUser} from './access';
+import {HttpClient} from '@angular/common/http';
+import {catchError, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -25,23 +25,23 @@ export class AccessService {
   }
 
   public deleteUser(userId: number): Observable<string> {
-    return this.apiService.endpoint('authentication/user/delete', { id: userId })
-      .pipe(
-        map(() => {
-          let name;
-          this.users = this.users.filter(user => {
-            if (user.id !== userId) {
-              return true;
-            }
-            name = user.name;
-            return false;
-          });
-          return name;
-        }),
-        catchError(error => {
-          throw error.error.error;
-        })
-      );
+    return this.apiService.endpoint('authentication/user/delete', {id: userId})
+    .pipe(
+      map(() => {
+        let name;
+        this.users = this.users.filter(user => {
+          if (user.id !== userId) {
+            return true;
+          }
+          name = user.name;
+          return false;
+        });
+        return name;
+      }),
+      catchError(error => {
+        throw error.error.error;
+      })
+    );
   }
 
   private updateCache(): void {
@@ -58,14 +58,14 @@ export class AccessService {
     }, error => console.error(error));
   }
 
-  private fetchUserInfo(user: AdminUser): Observable<{ name: string, avatar_url: string }> {
-    return this.httpClient.get<{ login: string, name?: string, avatar_url: string }>(`https://api.github.com/user/${user.id}`)
-      .pipe(
-        map(data => ({ name: data.name || data.login, avatar_url: data.avatar_url })),
-        catchError(error => {
-          console.log(error);
-          return of(undefined);
-        })
-      );
+  private fetchUserInfo(user: AdminUser): Observable<{ name: string; avatar_url: string }> {
+    return this.httpClient.get<{ login: string; name?: string; avatar_url: string }>(`https://api.github.com/user/${user.id}`)
+    .pipe(
+      map(data => ({name: data.name || data.login, avatar_url: data.avatar_url})),
+      catchError(error => {
+        console.log(error);
+        return of(undefined);
+      })
+    );
   }
 }

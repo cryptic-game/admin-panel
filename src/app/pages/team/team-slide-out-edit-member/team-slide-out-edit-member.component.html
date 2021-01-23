@@ -1,5 +1,5 @@
-<img *ngIf="member.github_id" [src]="'https://avatars.githubusercontent.com/u/' + member.github_id" alt="">
-<img *ngIf="!member.github_id" alt="" src="assets/user_not_found.svg">
+<img *ngIf="member?.github_id" [src]="'https://avatars.githubusercontent.com/u/' + member?.github_id" alt="">
+<img *ngIf="!member?.github_id" alt="" src="assets/user_not_found.svg">
 
 <form [formGroup]="form">
   <control-text-field>

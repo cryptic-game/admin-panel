@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'control-pagination',
   templateUrl: './pagination.component.html',
-  styleUrls: [ './pagination.component.scss' ]
+  styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent {
 

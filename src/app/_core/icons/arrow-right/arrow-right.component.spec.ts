@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ArrowRightComponent } from './arrow-right.component';
+import {ArrowRightComponent} from './arrow-right.component';
 
 describe('ArrowRightComponent', () => {
   let component: ArrowRightComponent;
@@ -8,9 +8,9 @@ describe('ArrowRightComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArrowRightComponent ]
+      declarations: [ArrowRightComponent]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

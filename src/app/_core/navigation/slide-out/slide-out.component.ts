@@ -1,22 +1,22 @@
-import { Component, ComponentFactoryResolver, Input, OnChanges, SimpleChanges, Type, ViewChild } from '@angular/core';
-import { NavigationService } from '../navigation.service';
-import { SlideOutOutletDirective } from './slide-out-outlet.directive';
-import { SlideOutDelegate } from './slide-out-delegate';
-import { Subscription } from 'rxjs';
+import {Component, ComponentFactoryResolver, Input, OnChanges, SimpleChanges, Type, ViewChild} from '@angular/core';
+import {NavigationService} from '../navigation.service';
+import {SlideOutOutletDirective} from './slide-out-outlet.directive';
+import {SlideOutDelegate} from './slide-out-delegate';
+import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'admin-slide-out',
+  selector: 'app-slide-out',
   templateUrl: './slide-out.component.html',
-  styleUrls: [ './slide-out.component.scss' ]
+  styleUrls: ['./slide-out.component.scss']
 })
 export class SlideOutComponent implements OnChanges {
 
-  title: string;
+  @ViewChild(SlideOutOutletDirective, {static: true})
+  public title?: string;
   @Input()
-  private slideOut: Type<SlideOutDelegate>;
-  @ViewChild(SlideOutOutletDirective, { static: true })
-  private outlet: SlideOutOutletDirective;
-  private currentSubscription: Subscription;
+  private slideOut?: Type<SlideOutDelegate>;
+  private outlet?: SlideOutOutletDirective;
+  private currentSubscription?: Subscription;
 
   constructor(
     private readonly navigationService: NavigationService,

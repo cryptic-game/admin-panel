@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TeamSlideOutEditMemberComponent } from './team-slide-out-edit-member.component';
+import {TeamSlideOutEditMemberComponent} from './team-slide-out-edit-member.component';
 
 describe('TeamSlideOutEditMemberComponent', () => {
   let component: TeamSlideOutEditMemberComponent;
@@ -8,7 +8,7 @@ describe('TeamSlideOutEditMemberComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamSlideOutEditMemberComponent ]
+      declarations: [TeamSlideOutEditMemberComponent]
     })
     .compileComponents();
   });

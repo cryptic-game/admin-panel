@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SlideOutComponent } from './slide-out.component';
+import {SlideOutComponent} from './slide-out.component';
 
 describe('SlideoutComponent', () => {
   let component: SlideOutComponent;
@@ -8,9 +8,9 @@ describe('SlideoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SlideOutComponent ]
+      declarations: [SlideOutComponent]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { AccountService } from '../../account/account.service';
+import {Component, Input} from '@angular/core';
+import {AccountService} from '../../account/account.service';
 
 @Component({
-  selector: 'admin-header',
+  selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: [ './header.component.scss' ]
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
 

@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { NotificationService } from '../notification.service';
-import { interval } from 'rxjs';
-import { Notification } from '../notification';
-import { slideFromRight } from '../../animtaions';
+import {Component} from '@angular/core';
+import {NotificationService} from '../notification.service';
+import {interval} from 'rxjs';
+import {Notification} from '../notification';
+import {slideFromRight} from '../../animtaions';
 
 @Component({
-  selector: 'admin-notification-list',
+  selector: 'app-notification-list',
   templateUrl: './notification-list.component.html',
-  styleUrls: [ './notification-list.component.scss' ],
-  animations: [ slideFromRight ]
+  styleUrls: ['./notification-list.component.scss'],
+  animations: [slideFromRight]
 })
 export class NotificationListComponent {
 

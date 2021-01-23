@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
-import { NavigationService } from '../../_core/navigation/navigation.service';
-import { TeamService } from '../../_api/team/team.service';
-import { TeamDepartment, TeamMember } from '../../_api/team/team';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
-import { TeamSlideOutAddMemberComponent } from './team-slide-out-add-member/team-slide-out-add-member.component';
-import { TeamSlideOutEditMemberComponent } from './team-slide-out-edit-member/team-slide-out-edit-member.component';
+import {Component} from '@angular/core';
+import {NavigationService} from '../../_core/navigation/navigation.service';
+import {TeamService} from '../../_api/team/team.service';
+import {TeamDepartment, TeamMember} from '../../_api/team/team';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl} from '@angular/forms';
+import {TeamSlideOutAddMemberComponent} from './team-slide-out-add-member/team-slide-out-add-member.component';
+import {TeamSlideOutEditMemberComponent} from './team-slide-out-edit-member/team-slide-out-edit-member.component';
 
 @Component({
-  selector: 'admin-team',
+  selector: 'app-team',
   templateUrl: './team.component.html',
-  styleUrls: [ './team.component.scss' ]
+  styleUrls: ['./team.component.scss']
 })
 export class TeamComponent {
 
   departmentFilter: FormControl;
-  private departmentId: string;
+  private departmentId?: string;
 
   constructor(
     private readonly navigationService: NavigationService,
@@ -24,12 +24,12 @@ export class TeamComponent {
     private readonly router: Router
   ) {
     this.navigationService.init('Team');
-    this.navigationService.showSlideOut(undefined);
+    this.navigationService.showSlideOut();
     this.departmentFilter = new FormControl(this.departmentId || 'all');
-    this.departmentFilter.valueChanges.subscribe(value => this.router.navigate([ 'team', value ]));
+    this.departmentFilter.valueChanges.subscribe(value => this.router.navigate(['team', value]));
     this.activatedRoute.params.subscribe(value => {
       this.departmentId = value.departmentId;
-      this.departmentFilter.setValue(this.departmentId, { emitEvent: false });
+      this.departmentFilter.setValue(this.departmentId, {emitEvent: false});
     });
   }
 
@@ -56,9 +56,9 @@ export class TeamComponent {
       [],
       {
         relativeTo: this.activatedRoute,
-        queryParams: { edit: member.id },
+        queryParams: {edit: member.id},
         queryParamsHandling: 'merge'
       })
-      .then(() => this.navigationService.showSlideOut(TeamSlideOutEditMemberComponent));
+    .then(() => this.navigationService.showSlideOut(TeamSlideOutEditMemberComponent));
   }
 }
