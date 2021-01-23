@@ -4,12 +4,9 @@ import { AccountGuard } from './_core/account/account.guard';
 import { LoginGuard } from './_core/account/login.guard';
 
 const routes: Routes = [
-  {
-    path: '',
+  { path: '',
     pathMatch: 'full',
-    redirectTo: 'dashboard',
-    canActivate: [ AccountGuard ]
-  },
+    redirectTo: 'dashboard' },
   {
     path: 'dashboard',
     canActivate: [ AccountGuard ],
