@@ -6,7 +6,7 @@
   you are a team member of Cryptic.
 </p>
 
-<control-button (performClick)="loginWithGithub()" [disabled]="loading">
+<control-button (performClick)="loginWithGithub()" [disabled]="loading || false">
   <span *ngIf="loading">Loading...</span>
   <span *ngIf="!loading">Login with GitHub</span>
 </control-button>

@@ -9,29 +9,29 @@ import {Notification} from '../notification';
 export class NotificationComponent {
 
   @Input()
-  private notification: Notification;
+  public notification?: Notification;
 
-  get notification0(): Notification {
+  get notification0(): Notification | undefined {
     return this.notification;
   }
 
   @HostBinding('class.info')
   private get isInfo(): boolean {
-    return this.notification.type === 'info';
+    return this.notification?.type === 'info';
   }
 
   @HostBinding('class.success')
   private get isSuccess(): boolean {
-    return this.notification.type === 'success';
+    return this.notification?.type === 'success';
   }
 
   @HostBinding('class.warning')
   private get isWarning(): boolean {
-    return this.notification.type === 'warning';
+    return this.notification?.type === 'warning';
   }
 
   @HostBinding('class.error')
   private get isError(): boolean {
-    return this.notification.type === 'error';
+    return this.notification?.type === 'error';
   }
 }

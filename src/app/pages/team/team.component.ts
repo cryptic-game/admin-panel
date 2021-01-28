@@ -33,11 +33,11 @@ export class TeamComponent {
     });
   }
 
-  get departments(): TeamDepartment[] {
+  get departments(): TeamDepartment[] | undefined {
     return this.teamService.departments;
   }
 
-  get members(): TeamMember[] {
+  get members(): TeamMember[] | undefined {
     return this.departmentId !== 'all'
       ? this.teamService.members?.filter(member => member.department_id === this.departmentId)
       : this.teamService.members;

@@ -9,7 +9,7 @@ import {AccountService} from '../../account/account.service';
 export class HeaderComponent {
 
   @Input()
-  title: string;
+  title?: string;
 
   // get user(): User {
   //   return this.accountService.user;

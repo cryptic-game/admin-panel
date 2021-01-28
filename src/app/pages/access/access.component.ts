@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {NavigationService} from '../../_core/navigation/navigation.service';
 import {AccessService} from '../../_api/access/access.service';
 import {AdminUser} from '../../_api/access/access';
-import {catchError} from 'rxjs/operators';
 import {NotificationService} from '../../_core/notification/notification.service';
 import {AccessSlideOutAddUserComponent} from './access-slide-out-add-user/access-slide-out-add-user.component';
 
@@ -22,12 +21,12 @@ export class AccessComponent {
     this.navigationService.showSlideOut(undefined);
   }
 
-  get users(): AdminUser[] {
+  get users(): AdminUser[] | undefined {
     return this.accessService.users;
   }
 
   getGroupDisplay(user: AdminUser): string {
-    return user.groups.map(group => this.accessService.getGroup(group).display_name).join(', ');
+    return user.groups.map(group => this.accessService.getGroup(group)?.display_name).join(', ');
   }
 
   trackBy(index: number, item: AdminUser): number {
@@ -36,7 +35,7 @@ export class AccessComponent {
 
   delete(userId: number): void {
     this.accessService.deleteUser(userId)
-    .pipe(catchError(error => {
+    .catch(error => {
       if (error === 'CANNOT_DELETE_OWN_USER') {
         this.notificationService.sendNotification('You cannot delete yourself.', 'error');
       } else if (error) {
@@ -46,8 +45,8 @@ export class AccessComponent {
           + 'report this error or try again later.', 'error');
       }
       throw error;
-    }))
-    .subscribe(data => {
+    })
+    .then((data: any) => {
       this.notificationService.sendNotification(`Successfully removed ${data}.`, 'success');
     });
   }

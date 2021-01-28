@@ -12,7 +12,7 @@ import {slideFromRight} from '../../animtaions';
 })
 export class NotificationListComponent {
 
-  notifications: Notification[];
+  notifications?: Notification[];
 
   constructor(
     private notificationService: NotificationService

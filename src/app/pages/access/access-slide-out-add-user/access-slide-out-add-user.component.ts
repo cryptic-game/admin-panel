@@ -34,13 +34,13 @@ export class AccessSlideOutAddUserComponent extends SlideOutDelegate {
       debounce(() => interval(1000)),
       mergeMap(value => this.loadGitHubId(value))
     )
-    .subscribe(id => this.githubId = id);
+    .subscribe(id => this.githubId = id || -1);
 
     this.form.controls.adminGroups.valueChanges
     .subscribe(value => console.log(value));
   }
 
-  get adminGroups(): AdminGroup[] {
+  get adminGroups(): AdminGroup[] | undefined {
     return this.accessService.groups;
   }
 
@@ -57,7 +57,7 @@ export class AccessSlideOutAddUserComponent extends SlideOutDelegate {
     this.close();
   }
 
-  private loadGitHubId(username: string): Observable<number> {
+  private loadGitHubId(username: string): Observable<number | undefined> {
     return this.httpClient.get<{ id: number }>(`https://api.github.com/users/${username}`)
     .pipe(
       map(data => data.id),

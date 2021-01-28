@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {interval, Observable, of} from 'rxjs';
-import {catchError, debounce, filter, map, mergeMap} from 'rxjs/operators';
+import {interval} from 'rxjs';
+import {debounce, filter, mergeMap} from 'rxjs/operators';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TeamService} from '../../../_api/team/team.service';
 import {TeamDepartment} from '../../../_api/team/team';
@@ -40,7 +40,7 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
     .subscribe(id => this.githubId = id);
   }
 
-  get departments(): TeamDepartment[] {
+  get departments(): TeamDepartment[] | undefined {
     return this.teamService.departments;
   }
 
@@ -57,14 +57,12 @@ export class TeamSlideOutAddMemberComponent extends SlideOutDelegate {
     this.close();
   }
 
-  private loadGitHubId(username: string): Observable<number> {
-    return this.httpClient.get<{ id: number }>(`https://api.github.com/users/${username}`)
-    .pipe(
-      map(data => data.id),
-      catchError(error => {
-        console.log(error);
-        return of('Error');
-      })
-    );
+  private async loadGitHubId(username: string): Promise<number> {
+    try {
+      return (await this.httpClient.get<{ id: number }>(`https://api.github.com/users/${username}`).toPromise()).id;
+    } catch (e) {
+      console.log(e);
+      return -1;
+    }
   }
 }

@@ -1,6 +1,6 @@
 <img
   alt=""
-  src="https://avatars.githubusercontent.com/u/{{ member.github_id }}"
+  src="https://avatars.githubusercontent.com/u/{{ member?.github_id || -1 }}"
 />
-<span class="name">{{ member.name }}</span>
-<span class="department">{{ department.name }}</span>
+<span class="name">{{ member?.name || 'Loading...' }}</span>
+<span class="department">{{ department?.name || 'Loading...'}}</span>

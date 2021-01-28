@@ -11,9 +11,10 @@ import {AccountService} from '../../_core/account/account.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loading: boolean;
-  error: string;
-  return: string;
+
+  loading?: boolean;
+  error?: number;
+  return?: string;
 
   constructor(
     private readonly navigationService: NavigationService,
@@ -63,7 +64,7 @@ export class LoginComponent implements OnInit {
   loginWithGithub(): void {
     this.apiService
     .endpoint<{ client_id: string }>('authentication/oauth/client_id')
-    .subscribe((data) => {
+    .then((data) => {
       if (!data.body) {
         return;
       }

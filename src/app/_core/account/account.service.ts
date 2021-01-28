@@ -13,9 +13,9 @@ import {DEFAULT_HEADERS} from '../../_api/api';
 })
 export class AccountService {
 
-  private jwt0: string;
-  private user0: User;
-  private expire: number;
+  private jwt0?: string;
+  private user0?: User;
+  private expire?: number;
 
   private readonly httpClient: HttpClient;
 
@@ -48,15 +48,19 @@ export class AccountService {
     );
   }
 
-  get user(): User {
+  get user(): User | undefined {
     return this.user0;
   }
 
-  get jwt(): string {
+  get jwt(): string | undefined {
     return this.jwt0;
   }
 
-  set jwt(jwt: string) {
+  set jwt(jwt: string | undefined) {
+    if (!jwt) {
+      return;
+    }
+
     const data: User & { exp: number } = jwt_decode(jwt);
     this.jwt0 = jwt;
     this.user0 = data;
@@ -66,23 +70,23 @@ export class AccountService {
   }
 
   get expired(): boolean {
-    return this.expire && this.expire <= Date.now() / 1000;
+    return Boolean(this.expire && this.expire <= Date.now() / 1000);
   }
 
   public authenticate(code: string): Observable<HttpResponse<OAuthAuthenticateResponse>> {
     return this.httpClient.post<OAuthAuthenticateResponse>(`${environment.apiBaseUrl}/authentication/oauth/callback`,
       {code}, {headers: DEFAULT_HEADERS, observe: 'response'})
     .pipe(tap(data => {
-      localStorage.setItem('refresh_token', data.body.refresh_token);
-      this.jwt = data.body.access_token;
+      localStorage.setItem('refresh_token', data.body?.refresh_token || '');
+      this.jwt = data.body?.access_token;
     }));
   }
 
   public refreshAccessToken(): Observable<HttpResponse<{ access_token: string }>> {
-    const refreshToken: string = localStorage.getItem('refresh_token');
+    const refreshToken: string = localStorage.getItem('refresh_token') || '';
     return this.httpClient.post<{ access_token: string }>(`${environment.apiBaseUrl}/authentication/token/refresh`,
       {refresh_token: refreshToken}, {headers: DEFAULT_HEADERS, observe: 'response'})
-    .pipe(tap(data => this.jwt = data.body.access_token));
+    .pipe(tap(data => this.jwt = data.body?.access_token));
   }
 
   public logout(): void {

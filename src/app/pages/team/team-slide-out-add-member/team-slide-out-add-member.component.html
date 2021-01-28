@@ -15,7 +15,7 @@
     </label>
   </control-text-field>
   <control-text-field [idField]="form.controls.departmentId" [valueField]="form.controls.departmentName"
-                      [values]="departments">
+                      [values]="departments || []">
     <label>
       Department
       <input formControlName="departmentName" type="text">

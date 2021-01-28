@@ -32,7 +32,12 @@ export class ApiService {
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types
-  public endpoint<T>(endpoint: string, body?: object): Observable<HttpResponse<T>> {
+  public endpoint<T>(endpoint: string, body?: object): Promise<HttpResponse<T>> {
+    return this.endpointObs<T>(endpoint, body).toPromise();
+  }
+
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  public endpointObs<T>(endpoint: string, body?: object): Observable<HttpResponse<T>> {
     if (this.accountService.expired) {
       return this.accountService.refreshAccessToken()
       .pipe(switchMap(() => this.endpoint0<T>(endpoint, body)));

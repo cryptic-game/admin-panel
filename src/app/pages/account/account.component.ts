@@ -18,7 +18,7 @@ export class AccountComponent {
     this.navigationService.showSlideOut(undefined);
   }
 
-  get user(): User {
+  get user(): User | undefined {
     return this.accountService.user;
   }
 }

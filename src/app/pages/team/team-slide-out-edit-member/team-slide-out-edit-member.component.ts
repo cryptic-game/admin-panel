@@ -35,19 +35,21 @@ export class TeamSlideOutEditMemberComponent extends SlideOutDelegate {
     });
   }
 
-  get departments(): TeamDepartment[] {
+  get departments(): TeamDepartment[] | undefined {
     return this.teamService.departments;
   }
 
-  load(id: string): void {
-    this.member = this.teamService.getMember(id);
-    this.loadGitHubName(this.member.github_id).subscribe(name => this.form.controls.githubName.setValue(name));
+  async load(id: string): Promise<void> {
+    this.member = await this.teamService.getMember(id);
+    if (this.member) {
+      this.loadGitHubName(this.member.github_id).subscribe(name => this.form.controls.githubName.setValue(name));
+    }
     this.form.setValue({
-      name: this.member.name,
+      name: this.member?.name,
       githubName: '',
-      departmentId: this.member.department_id,
-      departmentName: this.teamService.getDepartment(this.member.department_id).name,
-      joined: new Date(this.member.joined * 1000).toISOString().split('T')[0]
+      departmentId: this.member?.department_id,
+      departmentName: !this.member ? undefined : this.teamService.getDepartment(this.member.department_id)?.name,
+      joined: !this.member ? undefined : new Date(this.member?.joined * 1000).toISOString().split('T')[0]
     });
   }
 
@@ -60,7 +62,7 @@ export class TeamSlideOutEditMemberComponent extends SlideOutDelegate {
     this.member.department_id = this.form.controls.departmentId.value;
     this.member.joined = Math.floor(new Date(this.form.controls.joined.value).getTime() / 1000);
 
-    this.teamService.updateMember(this.member);
+    this.teamService.updateMember(this.member).then();
     this.form.reset();
     this.member = undefined;
 
