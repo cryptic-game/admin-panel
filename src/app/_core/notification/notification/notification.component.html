@@ -1,2 +1,2 @@
-<div [style.width.%]="(notification0.time - 1) * 10" class="line"></div>
-<span class="text">{{notification0.text}}</span>
+<div [style.width.%]="((notification0?.time || 1) - 1) * 10" class="line"></div>
+<span class="text">{{notification0?.text || 'Loading'}}</span>

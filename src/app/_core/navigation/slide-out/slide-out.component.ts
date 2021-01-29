@@ -14,7 +14,7 @@ export class SlideOutComponent implements OnChanges {
   @ViewChild(SlideOutOutletDirective, {static: true})
   public title?: string;
   @Input()
-  private slideOut?: Type<SlideOutDelegate>;
+  public slideOut?: Type<SlideOutDelegate>;
   private outlet?: SlideOutOutletDirective;
   private currentSubscription?: Subscription;
 
@@ -46,7 +46,7 @@ export class SlideOutComponent implements OnChanges {
   }
 
   private loadComponent(component: Type<SlideOutDelegate>): void {
-    if (component) {
+    if (component && this.outlet) {
       const instance = this.outlet.viewContainerRef.createComponent(this.componentFactory.resolveComponentFactory(component)).instance;
       this.title = instance.title;
       this.currentSubscription = instance.close0.subscribe(() => {
