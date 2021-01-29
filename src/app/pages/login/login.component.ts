@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {filter, mergeMap, tap} from 'rxjs/operators';
 import {ApiService} from '../../_api/api.service';
 import {AccountService} from '../../_core/account/account.service';
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
           this.loading = true;
           return this.accountService.authenticate(params.code);
         }
+        return throwError("Hier könnte Ihre Fehlermeldung stehen!");
       })
     )
     .subscribe(
