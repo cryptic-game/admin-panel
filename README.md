@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  This is the frontend of the Admin Panel from Cryptuc.
+  This is the frontend of the Admin Panel from Cryptic.
 </p>
 
 ## Getting Started
