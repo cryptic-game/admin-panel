@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {environment} from "../../../../../environments/environment";
-import {take} from "rxjs/operators";
-import {TeamDepartment, TeamMember} from "./team.domain";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
+import { take } from 'rxjs/operators';
+import { TeamDepartment, TeamMember } from './team.domain';
 
 @Injectable({
   providedIn: 'root'

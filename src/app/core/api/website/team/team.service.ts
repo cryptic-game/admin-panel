@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {TeamDepartment, TeamMember} from "./team.domain";
-import {TeamApiService} from "./team-api.service";
-import {forkJoin, Observable} from "rxjs";
-import {tap} from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { TeamDepartment, TeamMember } from './team.domain';
+import { TeamApiService } from './team-api.service';
+import { forkJoin, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +56,7 @@ export class TeamService {
         else {
           this.departments0?.push(department);
         }
-      }))
+      }));
   }
 
   public updateMember(member: TeamMember): Observable<TeamMember> {
@@ -73,7 +73,7 @@ export class TeamService {
         else {
           this.members0?.push(member);
         }
-      }))
+      }));
   }
 
   public updateCache(): void {

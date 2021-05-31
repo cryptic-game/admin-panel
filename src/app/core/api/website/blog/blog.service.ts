@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {BlogApiService} from "./blog-api.service";
-import {BlogPost, BlogPostSmall, toSmallPost, updatePost} from "./blog.domain";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { BlogApiService } from './blog-api.service';
+import { BlogPost, BlogPostSmall, toSmallPost, updatePost } from './blog.domain';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -57,7 +57,8 @@ export class BlogService {
 
         if (localPost) {
           updatePost(localPost, post);
-        } else {
+        }
+        else {
           this.posts0?.push(toSmallPost(post));
         }
       }));

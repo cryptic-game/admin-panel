@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {BlogPost, BlogPostSmall} from "./blog.domain";
-import {environment} from "../../../../../environments/environment";
-import {take} from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { BlogPost, BlogPostSmall } from './blog.domain';
+import { environment } from '../../../../../environments/environment';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
