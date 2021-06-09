@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AdminPanel</title>
+  <base href="/">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+<h1>Login successfully!</h1>
+<p>This window will be shortly closed...</p>
+
+<script>
+  window.that.postMessage(window.location.search, window.that.origin);
+
+  fetch(`http://localhost:8080/login/oauth2/code/cryptic-oauth${window.location.search}`).then();
+
+  // window.close();
+</script>
+
+</body>
+</html>

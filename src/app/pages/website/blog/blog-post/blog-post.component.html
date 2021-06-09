@@ -1,0 +1,11 @@
+<div class="header">
+  <h1>{{post?.title}}</h1>
+  <a routerLink="edit">Edit</a>
+</div>
+<p *ngIf="post?.published">published</p>
+<h3>{{post?.description}}</h3>
+<p>
+  created: {{post?.created | date: 'medium'}}
+  <span *ngIf="post?.updated"> - updated: {{post?.updated | date: 'medium'}}</span>
+</p>
+<div [innerHTML]="post?.content"></div>

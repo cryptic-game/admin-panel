@@ -1,8 +1,10 @@
+export interface BlogPostId {
+  language: string;
+  postId: string;
+}
+
 export interface BlogPostSmall {
-  id: {
-    language: string;
-    postId: string;
-  };
+  id: BlogPostId;
   title: string;
   image: string;
   created: string;

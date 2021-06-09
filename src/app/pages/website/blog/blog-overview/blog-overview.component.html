@@ -1,0 +1,35 @@
+<table [dataSource]="posts" [trackBy]="trackBy" cdk-table>
+
+  <ng-container cdkColumnDef="title">
+    <th *cdkHeaderCellDef cdk-header-cell>Title</th>
+    <td *cdkCellDef="let element" cdk-cell>{{element.title}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="published">
+    <th *cdkHeaderCellDef cdk-header-cell>Published</th>
+    <td *cdkCellDef="let element" cdk-cell><span *ngIf="element.published">Yes</span></td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="created">
+    <th *cdkHeaderCellDef cdk-header-cell>Created</th>
+    <td *cdkCellDef="let element" cdk-cell>{{element.created | date}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="updated">
+    <th *cdkHeaderCellDef cdk-header-cell>Updated</th>
+    <td *cdkCellDef="let element" cdk-cell>{{element.updated | date}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="description">
+    <th *cdkHeaderCellDef cdk-header-cell>Description</th>
+    <td *cdkCellDef="let element" cdk-cell>{{element.description}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="view">
+    <th *cdkHeaderCellDef cdk-header-cell>View</th>
+    <td *cdkCellDef="let element" cdk-cell><a [routerLink]="element.id.postId">View</a></td>
+  </ng-container>
+
+  <tr *cdkHeaderRowDef="displayedColumns" cdk-header-row></tr>
+  <tr *cdkRowDef="let row; columns: displayedColumns;" cdk-row></tr>
+</table>

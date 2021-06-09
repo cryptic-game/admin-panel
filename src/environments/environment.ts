@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://api.admin.staging.cryptic-game.net'
+  api: 'http://localhost:8080'
 };
 
 /*

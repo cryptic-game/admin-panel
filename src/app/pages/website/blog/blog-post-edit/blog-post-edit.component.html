@@ -1,0 +1,28 @@
+<form (submit)="$event.preventDefault();save()" [formGroup]="form">
+  <label>
+    Title
+    <input formControlName="title" type="text">
+  </label>
+
+  <label>
+    Description
+    <textarea appAutosize formControlName="description"></textarea>
+  </label>
+
+  <label>
+    Published
+    <input formControlName="published" type="checkbox">
+  </label>
+
+  <label>
+    Image
+    <input formControlName="image" type="text">
+  </label>
+
+  <label>
+    Content
+    <textarea appAutosize cols="255" formControlName="content"></textarea>
+  </label>
+
+  <input type="submit" value="Save">
+</form>

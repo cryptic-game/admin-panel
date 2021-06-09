@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './core/api/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'admin-panel';
+
+  constructor(
+    private readonly authService: AuthService
+  ) {
+  }
 }
