@@ -15,6 +15,7 @@ export interface BlogPostSmall {
 
 export interface BlogPost extends BlogPostSmall {
   content: string;
+  languages: string[];
 }
 
 export function toSmallPost(post: BlogPost): BlogPostSmall {

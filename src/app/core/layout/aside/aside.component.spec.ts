@@ -9,7 +9,7 @@ describe('AsideComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AsideComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

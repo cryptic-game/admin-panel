@@ -5,7 +5,6 @@ import { FooterComponent } from './footer/footer.component';
 import { AsideComponent } from './aside/aside.component';
 
 
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -16,4 +15,5 @@ import { AsideComponent } from './aside/aside.component';
     CommonModule
   ]
 })
-export class LayoutModule { }
+export class LayoutModule {
+}

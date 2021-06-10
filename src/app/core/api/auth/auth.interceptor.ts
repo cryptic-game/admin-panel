@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponseBase } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
-import { catchError, mergeMap, tap } from 'rxjs/operators';
+import { catchError, mergeMap } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
 @Injectable()

@@ -47,7 +47,9 @@ export class BlogPostEditComponent implements OnInit, OnDestroy {
     });
 
     const description = this.form.get('description')!;
-    this.descriptionSubscription = description.valueChanges.subscribe(value => description.setValue(value.replace('\n', ''), { emitEvent: false }));
+    this.descriptionSubscription = description.valueChanges
+      .pipe(filter(value => value))
+      .subscribe(value => description.setValue(value.replace('\n', ''), { emitEvent: false }));
   }
 
   ngOnDestroy(): void {

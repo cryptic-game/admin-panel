@@ -8,8 +8,6 @@ import { BlogPostNewComponent } from './blog-post-new/blog-post-new.component';
 const routes: Routes = [
   { path: '', component: BlogOverviewComponent },
   { path: 'new', component: BlogPostNewComponent },
-  { path: ':postId', component: BlogPostComponent },
-  { path: ':postId/edit', component: BlogPostEditComponent },
   { path: ':language/:postId', component: BlogPostComponent },
   { path: ':language/:postId/edit', component: BlogPostEditComponent }
 ];

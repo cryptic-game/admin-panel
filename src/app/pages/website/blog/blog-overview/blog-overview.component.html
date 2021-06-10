@@ -27,9 +27,12 @@
 
   <ng-container cdkColumnDef="view">
     <th *cdkHeaderCellDef cdk-header-cell>View</th>
-    <td *cdkCellDef="let element" cdk-cell><a [routerLink]="element.id.postId">View</a></td>
+    <td *cdkCellDef="let element" cdk-cell><a [routerLink]="element.id.language + '/' +element.id.postId">View</a></td>
   </ng-container>
 
   <tr *cdkHeaderRowDef="displayedColumns" cdk-header-row></tr>
   <tr *cdkRowDef="let row; columns: displayedColumns;" cdk-row></tr>
 </table>
+
+<br>
+<a routerLink="new">Create new one</a>

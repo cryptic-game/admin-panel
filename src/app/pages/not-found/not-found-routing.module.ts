@@ -8,4 +8,5 @@ const routes: Routes = [{ path: '', component: NotFoundComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class NotFoundRoutingModule { }
+export class NotFoundRoutingModule {
+}

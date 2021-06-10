@@ -31,10 +31,14 @@ export class BlogService {
     return this.posts0 || [];
   }
 
-  public findPost(language: string | undefined, postId: string): Observable<BlogPost> {
-    return this.blogApiService.findBlogPost(language || this.language0, postId)
+  public findPost(language: string, postId: string): Observable<BlogPost> {
+    return this.blogApiService.findBlogPost(language, postId)
       .pipe(tap(post => {
-        const localPost = this.posts0?.find(p => p.id.postId === post.id.postId && p.id.language === post.id.language);
+        if (post.id.language !== this.language0) {
+          return;
+        }
+
+        const localPost = this.posts0?.find(p => p.id.postId === post.id.postId);
 
         if (localPost) {
           updatePost(localPost, post);
@@ -53,7 +57,11 @@ export class BlogService {
   public updatePost(post: BlogPost): Observable<BlogPost> {
     return this.blogApiService.updateBlogPost(post)
       .pipe(tap(post => {
-        const localPost = this.posts0?.find(p => p.id.postId === post.id.postId && p.id.language === post.id.language);
+        if (post.id.language !== this.language0) {
+          return;
+        }
+
+        const localPost = this.posts0?.find(p => p.id.postId === post.id.postId);
 
         if (localPost) {
           updatePost(localPost, post);
