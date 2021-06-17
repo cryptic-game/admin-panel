@@ -12,7 +12,7 @@ export class BlogOverviewComponent {
   readonly displayedColumns = [ 'title', 'published', 'created', 'updated', 'description', 'view' ];
 
   constructor(
-      private readonly blogService: BlogService
+    private readonly blogService: BlogService
   ) {
   }
 
