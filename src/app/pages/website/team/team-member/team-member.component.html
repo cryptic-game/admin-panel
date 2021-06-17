@@ -1,0 +1,39 @@
+<form (submit)="$event.preventDefault();save()" [formGroup]="form">
+
+  <img [src]="image" alt="Avatar">
+
+  <br>
+
+  <label>
+    Name:
+    <input formControlName="name" type="text">
+  </label>
+
+  <br>
+
+  <label>
+    GitHub Name:
+    <input formControlName="githubName" type="text">
+  </label>
+
+  <br>
+
+  <label>
+    Joined:
+    <input formControlName="joined" type="date">
+  </label>
+
+  <br>
+
+  <label>
+    Department:
+    <select formControlName="departmentId">
+      <option *ngFor="let department of departments; trackBy trackBy"
+              [value]="department.id">{{department.name}}</option>
+    </select>
+  </label>
+
+  <br>
+
+  <input type="submit" value="Save">
+</form>

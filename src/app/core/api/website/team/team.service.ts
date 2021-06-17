@@ -76,6 +76,14 @@ export class TeamService {
       }));
   }
 
+  public findGitHubId(name: string): Observable<number> {
+    return this.teamApiService.findGitHubId(name);
+  }
+
+  public findGitHubName(id: number): Observable<string> {
+    return this.teamApiService.findGitHubName(id);
+  }
+
   public updateCache(): void {
     forkJoin({
       departments: this.teamApiService.findDepartments(),

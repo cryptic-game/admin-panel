@@ -1,0 +1,15 @@
+<form (submit)="$event.preventDefault();save()" [formGroup]="form">
+
+  <label>
+    Name:
+    <input formControlName="name" type="text">
+  </label>
+
+  <label>
+    Description:
+    <textarea appAutosize formControlName="description"></textarea>
+  </label>
+
+  <input type="submit" value="Save">
+
+</form>

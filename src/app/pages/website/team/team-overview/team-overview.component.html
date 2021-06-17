@@ -1,0 +1,33 @@
+<table [dataSource]="member" [trackBy]="trackBy" cdk-table>
+
+  <ng-container cdkColumnDef="image">
+    <th *cdkHeaderCellDef cdk-header-cell>Image</th>
+    <td *cdkCellDef="let element" cdk-cell><img [src]="getImage(element.githubId)" alt="Image"></td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="name">
+    <th *cdkHeaderCellDef cdk-header-cell>Name</th>
+    <td *cdkCellDef="let element" cdk-cell>{{element.name}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="department">
+    <th *cdkHeaderCellDef cdk-header-cell>Department</th>
+    <td *cdkCellDef="let element" cdk-cell>
+      <a [routerLink]="'department/'+element.departmentId">{{getDepartment(element.departmentId)?.name}}</a>
+    </td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="view">
+    <th *cdkHeaderCellDef cdk-header-cell>View</th>
+    <td *cdkCellDef="let element" cdk-cell><a [routerLink]="element.id">View</a></td>
+  </ng-container>
+
+  <tr *cdkHeaderRowDef="displayedColumns" cdk-header-row></tr>
+  <tr *cdkRowDef="let row; columns: displayedColumns;" cdk-row></tr>
+</table>
+
+<br>
+
+<a routerLink="new">Create new member</a>
+<br>
+<a routerLink="department/new">Create new department</a>
