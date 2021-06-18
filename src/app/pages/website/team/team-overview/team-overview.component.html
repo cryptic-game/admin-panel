@@ -2,7 +2,7 @@
 
   <ng-container cdkColumnDef="image">
     <th *cdkHeaderCellDef cdk-header-cell>Image</th>
-    <td *cdkCellDef="let element" cdk-cell><img [src]="getImage(element.githubId)" alt="Image"></td>
+    <td *cdkCellDef="let element" cdk-cell><img [src]="getImage(element.githubId)" alt="Image" loading="lazy"></td>
   </ng-container>
 
   <ng-container cdkColumnDef="name">
