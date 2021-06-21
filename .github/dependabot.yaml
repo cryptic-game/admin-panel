@@ -10,7 +10,7 @@ updates:
     directory: "/" # Location of package manifests
     open-pull-requests-limit: 10
     schedule:
-      interval: "daily"
+      interval: "monthly"
 
   - package-ecosystem: "github-actions"
     # Workflow files stored in the default location of `.github/workflows`
