@@ -1,0 +1,7 @@
+@import 'vars';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  row-gap: $row-padding;
+}

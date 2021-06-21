@@ -5,10 +5,12 @@ import { TeamMemberComponent } from './team-member/team-member.component';
 import { TeamComponentComponent } from './team-component.component';
 import { TeamDepartmentComponent } from './team-department/team-department.component';
 import { TeamDepartmentNewComponent } from './team-department-new/team-department-new.component';
+import { TeamNoActionComponent } from './team-no-action/team-no-action.component';
 
 const routes: Routes = [{
   path: '', component: TeamComponentComponent,
   children: [
+    { path: '', component: TeamNoActionComponent },
     { path: 'new', component: TeamMemberNewComponent },
     { path: ':memberId', component: TeamMemberComponent },
     { path: 'department/new', component: TeamDepartmentNewComponent },

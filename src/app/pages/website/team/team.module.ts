@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TeamDepartmentComponent } from './team-department/team-department.component';
 import { TeamDepartmentNewComponent } from './team-department-new/team-department-new.component';
 import { SharedModule } from '../../../core/shared/shared.module';
+import { TeamNoActionComponent } from './team-no-action/team-no-action.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SharedModule } from '../../../core/shared/shared.module';
     TeamMemberNewComponent,
     TeamComponentComponent,
     TeamDepartmentComponent,
-    TeamDepartmentNewComponent
+    TeamDepartmentNewComponent,
+    TeamNoActionComponent
   ],
   imports: [
     CommonModule,
