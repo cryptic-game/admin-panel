@@ -45,6 +45,6 @@ export class EndpointsService {
 
   private updateCache(): void {
     this.endpointsApi.findEndpoints()
-      .subscribe(endpoints => this.endpoints0 = endpoints);
+      .subscribe(endpoints => this.endpoints0 = endpoints.sort((a,b) => ('' + a.id).localeCompare(b.id)));
   }
 }

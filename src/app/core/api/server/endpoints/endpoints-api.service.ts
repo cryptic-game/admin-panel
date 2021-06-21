@@ -21,12 +21,14 @@ export class EndpointsApiService {
   }
 
   public enable(id: string): Observable<Endpoint> {
-    return this.http.delete<Endpoint>(`${environment.api}/server/endpoints/${id}`, { withCredentials: true })
+    console.log(`${environment.api}/server/endpoints/${encodeURIComponent(id)}`);
+    return this.http.delete<Endpoint>(`${environment.api}/server/endpoints/${encodeURIComponent(id)}`, { withCredentials: true })
       .pipe(take(1));
   }
 
   public disable(id: string): Observable<Endpoint> {
-    return this.http.post<Endpoint>(`${environment.api}/server/endpoints/${id}`, null, { withCredentials: true })
+    console.log(`${environment.api}/server/endpoints/${encodeURIComponent(id)}`);
+    return this.http.post<Endpoint>(`${environment.api}/server/endpoints/${encodeURIComponent(id)}`, null, { withCredentials: true })
       .pipe(take(1));
   }
 }
