@@ -1,2 +1,30 @@
 <h1>Endpoint Management</h1>
-<p>WIP</p>
+
+<table [dataSource]="endpoints" [trackBy]="trackBy" cdk-table>
+
+  <ng-container cdkColumnDef="id">
+    <th *cdkHeaderCellDef cdk-header-cell>Id</th>
+    <td *cdkCellDef="let element" cdk-cell>{{element.id}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="disabled">
+    <th *cdkHeaderCellDef cdk-header-cell>Disabled</th>
+    <td *cdkCellDef="let element" cdk-cell><span *ngIf="element.disabled">X</span></td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="description">
+    <th *cdkHeaderCellDef cdk-header-cell>Description</th>
+    <td *cdkCellDef="let element" cdk-cell>{{element.description}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="action">
+    <th *cdkHeaderCellDef cdk-header-cell>Action</th>
+    <td *cdkCellDef="let element" cdk-cell>
+      <button *ngIf="element.disabled" (click)="enable(element.id)">Enable</button>
+      <button *ngIf="!element.disabled" (click)="disable(element.id)">Disable</button>
+    </td>
+  </ng-container>
+
+  <tr *cdkHeaderRowDef="displayedColumns" cdk-header-row></tr>
+  <tr *cdkRowDef="let row; columns: displayedColumns;" cdk-row></tr>
+</table>

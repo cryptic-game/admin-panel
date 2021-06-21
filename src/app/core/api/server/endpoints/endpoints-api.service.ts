@@ -16,17 +16,17 @@ export class EndpointsApiService {
   }
 
   public findEndpoints(): Observable<Endpoint[]> {
-    return this.http.get<{ [name: string]: Endpoint }>(`${environment.api}/server_management/disabled_endpoints/all_server_endpoints`)
+    return this.http.get<{ [name: string]: Endpoint }>(`${environment.api}/server/endpoints`, { withCredentials: true })
       .pipe(map(data => Object.values(data)), take(1));
   }
 
   public enable(id: string): Observable<Endpoint> {
-    return this.http.delete<Endpoint>(`${environment.api}/server_management/disabled_endpoints/${id}`)
+    return this.http.delete<Endpoint>(`${environment.api}/server/endpoints/${id}`, { withCredentials: true })
       .pipe(take(1));
   }
 
   public disable(id: string): Observable<Endpoint> {
-    return this.http.post<Endpoint>(`${environment.api}/server_management/disabled_endpoints/${id}`, null)
+    return this.http.post<Endpoint>(`${environment.api}/server/endpoints/${id}`, null, { withCredentials: true })
       .pipe(take(1));
   }
 }

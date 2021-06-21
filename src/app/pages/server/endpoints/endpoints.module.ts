@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EndpointsRoutingModule } from './endpoints-routing.module';
 import { EndpointsComponent } from './endpoints.component';
+import { CdkTableModule } from '@angular/cdk/table';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { EndpointsComponent } from './endpoints.component';
   ],
   imports: [
     CommonModule,
-    EndpointsRoutingModule
+    EndpointsRoutingModule,
+    CdkTableModule
   ]
 })
 export class EndpointsModule {
