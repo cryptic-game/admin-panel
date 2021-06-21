@@ -1,10 +1,23 @@
+@import 'vars';
+
 :host {
   display: flex;
   flex-direction: column;
+  padding: $page-padding;
+  row-gap: $row-padding;
 
   div.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  img {
+    height: 20vh;
+    border: $cube * 1 solid #000;
+  }
+
+  ul {
+    list-style-type: none;
   }
 }

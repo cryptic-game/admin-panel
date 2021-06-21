@@ -1,0 +1,24 @@
+@import 'vars';
+
+table {
+  border: 0;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: $cube * 5;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+tr:nth-child(odd) {
+  background-color: #eeeded;
+}
+
+th {
+  background-color: gray;
+  color: #fff;
+}

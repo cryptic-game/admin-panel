@@ -2,16 +2,25 @@
   <h1>{{post?.title}}</h1>
   <a routerLink="edit">Edit</a>
 </div>
-<p *ngIf="post?.published">published</p>
-<h3>{{post?.description}}</h3>
-<h3>Languages</h3>
-<ul>
-  <li *ngFor="let language of post?.languages">
-    <a [routerLink]="'../../' + language + '/' + post?.id?.postId">{{language}}</a>
-  </li>
-</ul>
-<p>
-  created: {{post?.created | date: 'medium'}}
-  <span *ngIf="post?.updated"> - updated: {{post?.updated | date: 'medium'}}</span>
-</p>
+
+<div class="metadata">
+  <p *ngIf="post?.published">published</p>
+  <h3>{{post?.description}}</h3>
+  <p>
+    {{post?.created | date: 'medium'}}
+    <span *ngIf="post?.updated"> - last modified: {{post?.updated | date: 'medium'}}</span>
+  </p>
+</div>
+
+<img *ngIf="post?.image" [src]="post?.image" alt="Tittle Image">
+
+<div class="language">
+  <h3>Languages</h3>
+  <ul>
+    <li *ngFor="let language of post?.languages">
+      <a [routerLink]="'../../' + language + '/' + post?.id?.postId">{{language}}</a>
+    </li>
+  </ul>
+</div>
+
 <div [innerHTML]="post?.content"></div>

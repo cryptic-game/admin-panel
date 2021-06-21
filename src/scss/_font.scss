@@ -1,0 +1,39 @@
+@import '~@fontsource/jost/400.css';
+@import '~@fontsource/jost/500.css';
+@import '~@fontsource/jost/variable.css';
+@import '~@fontsource/jost/variable-italic.css';
+
+@import '~@fontsource/roboto-mono/400.css';
+//@import '~@fontsource/roboto-mono/500.css';
+//@import '~@fontsource/roboto-mono/variable.css';
+//@import '~@fontsource/roboto-mono/variable-italic.css';
+
+code, pre, input, textarea {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+}
+
+input, textarea {
+  font-size: 0.8rem;
+}
+
+body, input[type=submit], select {
+  font-family: Jost, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, b, strong, th {
+  font-weight: 700;
+}
+
+@supports (font-variation-settings: normal) {
+  body, input[type=submit], select {
+    font-family: JostVariable, sans-serif;
+    font-variation-settings: 'wght' 400;
+  }
+
+  h1, h2, h3, h4, h5, h6, b, strong, th {
+    font-variation-settings: 'wght' 600;
+  }
+}

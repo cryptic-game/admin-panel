@@ -1,4 +1,13 @@
-img {
-  width: 50px;
-  height: 50px;
+@import 'vars';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: $page-padding;
+  row-gap: $row-padding;
+
+  img {
+    width: $cube * 30;
+    height: $cube * 30;
+  }
 }

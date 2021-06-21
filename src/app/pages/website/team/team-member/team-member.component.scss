@@ -1,0 +1,12 @@
+@import 'vars';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  row-gap: $row-padding;
+
+  img {
+    width: $aside-with;
+    height: $aside-with;
+  }
+}

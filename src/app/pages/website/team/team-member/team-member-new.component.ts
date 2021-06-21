@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-team-member-new',
-  templateUrl: './team-member.component.html',
+  templateUrl: './team-member-new.component.html',
   styleUrls: ['./team-member.component.scss']
 })
 export class TeamMemberNewComponent extends TeamMemberBaseComponent implements OnDestroy {

@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'scss/font';
+@import 'vars';
+
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+
+  &, &::before, &::after {
+    box-sizing: inherit;
+  }
+}
+
+@import 'scss/table';
+@import 'scss/form';
+
+aside {
+  width: $aside-with;
+  height: calc(100vh - #{$page-padding * 2});
+  padding: $page-padding;
+  border-left: $cube * 1 solid #c2c2c2;
+  background-color: #eeeded;
+}

@@ -36,8 +36,8 @@ export abstract class TeamMemberBaseComponent {
       .subscribe(id => this.githubId = id);
   }
 
-  public get image(): string {
-    return this.githubId ? `https://avatars.githubusercontent.com/u/${this.githubId}` : '';
+  public get image(): string | undefined {
+    return !this.githubId ? undefined : `https://avatars.githubusercontent.com/u/${this.githubId}`;
   }
 
   public get departments(): TeamDepartment[] {

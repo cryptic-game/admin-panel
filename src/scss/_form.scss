@@ -1,0 +1,45 @@
+@import 'vars';
+
+form {
+  display: flex;
+  flex-direction: column;
+  row-gap: $cube * 10;
+
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type=submit] {
+    margin-top: $cube * 10;
+
+    cursor: pointer;
+    transition: 200ms background-color;
+
+    &:hover {
+      background-color: #e3e3e3;
+    }
+  }
+
+  input {
+    user-select: initial;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  input[type=checkbox] {
+    margin-right: auto;
+  }
+
+  input, select, textarea {
+    border: $cube * 1 solid #000;
+    background-color: #fff;
+    outline: none;
+
+    &:not([type=submit]) {
+      padding: $cube * 5;
+    }
+  }
+}

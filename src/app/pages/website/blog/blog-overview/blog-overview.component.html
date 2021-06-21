@@ -1,3 +1,5 @@
+<h1>Blog</h1>
+
 <table [dataSource]="posts" [trackBy]="trackBy" cdk-table>
 
   <ng-container cdkColumnDef="title">
@@ -34,5 +36,4 @@
   <tr *cdkRowDef="let row; columns: displayedColumns;" cdk-row></tr>
 </table>
 
-<br>
 <a routerLink="new">Create new one</a>

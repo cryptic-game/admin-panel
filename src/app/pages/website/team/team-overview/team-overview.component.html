@@ -1,3 +1,5 @@
+<h1>Team</h1>
+
 <table [dataSource]="member" [trackBy]="trackBy" cdk-table>
 
   <ng-container cdkColumnDef="image">
@@ -26,8 +28,8 @@
   <tr *cdkRowDef="let row; columns: displayedColumns;" cdk-row></tr>
 </table>
 
-<br>
-
-<a routerLink="new">Create new member</a>
-<br>
-<a routerLink="department/new">Create new department</a>
+<div>
+  <a routerLink="new">Create new member</a>
+  <br>
+  <a routerLink="department/new">Create new department</a>
+</div>

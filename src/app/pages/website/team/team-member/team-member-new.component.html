@@ -1,24 +1,32 @@
-<h1>Edit Member</h1>
+<h1>Create Member</h1>
 
 <form (submit)="$event.preventDefault();save()" [formGroup]="form">
 
   <img *ngIf="image" [src]="image" alt="Avatar">
   <img *ngIf="!image" src="assets/no-avatar.svg" alt="Avatar">
 
+  <br>
+
   <label>
     Name:
     <input formControlName="name" type="text">
   </label>
+
+  <br>
 
   <label>
     GitHub Name:
     <input formControlName="githubName" type="text">
   </label>
 
+  <br>
+
   <label>
     Joined:
     <input formControlName="joined" type="date">
   </label>
+
+  <br>
 
   <label>
     Department:
@@ -27,6 +35,8 @@
               [value]="department.id">{{department.name}}</option>
     </select>
   </label>
+
+  <br>
 
   <input type="submit" value="Save">
 </form>
