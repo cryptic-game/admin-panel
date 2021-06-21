@@ -1,5 +1,5 @@
 @import '~@fontsource/jost/400.css';
-@import '~@fontsource/jost/500.css';
+@import '~@fontsource/jost/600.css';
 @import '~@fontsource/jost/variable.css';
 @import '~@fontsource/jost/variable-italic.css';
 
@@ -24,7 +24,7 @@ body, input[type=submit], select {
 }
 
 h1, h2, h3, h4, h5, h6, b, strong, th {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 @supports (font-variation-settings: normal) {
