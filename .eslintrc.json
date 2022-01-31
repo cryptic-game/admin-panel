@@ -6,7 +6,6 @@
   "overrides": [
     {
       "files": [
-        "*.js",
         "*.ts"
       ],
       "parserOptions": {
@@ -35,41 +34,7 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ],
-        "object-curly-spacing": [
-          "error",
-          "always"
-        ],
-        "array-bracket-spacing": [
-          "error",
-          "always",
-          {
-            "singleValue": false,
-            "objectsInArrays": false,
-            "arraysInArrays": false
-          }
-        ],
-        "semi": "error",
-        "no-extra-semi": "error",
-        "comma-dangle": "error",
-        "no-debugger": "warn",
-        "no-var": "error",
-        "object-shorthand": "warn",
-        "prefer-const": "warn",
-        "no-lonely-if": "warn",
-        "camelcase": "error",
-        "quotes": [
-          2,
-          "single",
-          "avoid-escape"
-        ],
-        "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/no-extra-non-null-assertion": "error",
-        "@typescript-eslint/no-implicit-any-catch": "error",
-        "@typescript-eslint/no-misused-promises": "error",
-        "@typescript-eslint/no-unnecessary-type-assertion": "error",
-        "@typescript-eslint/no-unnecessary-type-constraint": "error",
-        "@typescript-eslint/prefer-ts-expect-error": "error"
+        ]
       }
     },
     {
