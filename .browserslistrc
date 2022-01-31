@@ -15,3 +15,6 @@ last 2 Safari major versions
 last 2 iOS major versions
 Firefox ESR
 not IE 11 # Angular supports IE 11 only as an opt-in. To opt-in, remove the 'not' prefix on this line.
+
+not ios_saf 15.2-15.3 # temporary solution to avoid build issues https://github.com/nrwl/nx/issues/8768
+not safari 15.2-15.3  # temporary solution to avoid build issues https://github.com/nrwl/nx/issues/8768
